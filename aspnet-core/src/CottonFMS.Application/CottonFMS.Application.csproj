@@ -12,5 +12,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\CottonFMS.Core\CottonFMS.Core.csproj" />
+    <ProjectReference Include="..\CottonFMS.EntityFrameworkCore\CottonFMS.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>

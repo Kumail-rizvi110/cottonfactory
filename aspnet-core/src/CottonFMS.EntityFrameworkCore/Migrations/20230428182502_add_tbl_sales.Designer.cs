@@ -4,14 +4,16 @@ using CottonFMS.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CottonFMS.Migrations
 {
     [DbContext(typeof(CottonFMSDbContext))]
-    partial class CottonFMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230428182502_add_tbl_sales")]
+    partial class add_tbl_sales
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
