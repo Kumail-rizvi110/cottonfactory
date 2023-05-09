@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/angular/node_modules
+/angular/obj
+/aspnet-core/src/CottonFMS.Web.Host/App_Data/Logs/Logs.txt

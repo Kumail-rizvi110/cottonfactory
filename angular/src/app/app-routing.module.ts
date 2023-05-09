@@ -8,6 +8,8 @@ import { UsersComponent } from './users/users.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
+import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
+import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
 
 @NgModule({
     imports: [
@@ -19,6 +21,8 @@ import { ChangePasswordComponent } from './users/change-password/change-password
                     { path: 'home', component: HomeComponent,  canActivate: [AppRouteGuard] },
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    { path: 'pages/sales/sales-form', component: SalesFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    { path: 'pages/sales/sales-list', component: SalesListComponent, data: { permission: 'Pages.Sales' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
                     { path: 'update-password', component: ChangePasswordComponent }

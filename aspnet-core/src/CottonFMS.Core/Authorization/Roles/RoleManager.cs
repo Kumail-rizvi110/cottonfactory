@@ -38,6 +38,8 @@ namespace CottonFMS.Authorization.Roles
                 organizationUnitRepository,
                 organizationUnitRoleRepository)
         {
+            
+
         }
     }
 }
