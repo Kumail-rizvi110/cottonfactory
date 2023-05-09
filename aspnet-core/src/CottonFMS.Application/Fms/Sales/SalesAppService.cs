@@ -18,6 +18,7 @@ namespace CottonFMS.Fms.Sales
         private CottonFMSDbContext _context => _dbContextProvider.GetDbContext();
         private readonly IDbContextProvider<CottonFMSDbContext> _dbContextProvider;
         private IRepository<Sales, long> _repo;
+
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         public SalesAppService(
             IRepository<Sales, long> repo
@@ -32,8 +33,7 @@ namespace CottonFMS.Fms.Sales
         }
         public async Task<string> Create(SalesModel input)
         {
-            using (var unitOfWork = _unitOfWorkManager.Begin(System.Transactions.TransactionScopeOption.RequiresNew))
-            {
+           
                 try
                 {
                     
@@ -78,7 +78,7 @@ namespace CottonFMS.Fms.Sales
                         }
 
                     return "Error";
-                        await unitOfWork.CompleteAsync();
+                       
                         // return "Successfully Issued";
                         
                     
@@ -87,11 +87,10 @@ namespace CottonFMS.Fms.Sales
 
                 catch (Exception ex)
                 {
-                    var Exception = ex;
-                    unitOfWork.Dispose();
+                    
                     throw ex;
                 }
-            }
+            
         }
 
 
@@ -118,13 +117,13 @@ namespace CottonFMS.Fms.Sales
             }
         }
 
-        private List<SalesModel> GetPage(List<SalesModel> list, int page, int pageSize)
+        private List<SalesModel> GetPage(List<SalesModel> list)
         {
-            return list.Skip(page * pageSize).Take(pageSize).ToList();
+            return list.ToList(); //(page * pageSize).Take(pageSize)
         }
 
 
-        public async Task<SalesPageModel> PostFilterData(Dictionary<string, string> keyValuePairs, int page, int pageSize)
+        public async Task<SalesPageModel> PostFilterData(Dictionary<string, string> keyValuePairs)
         {
             // string IssueDateFrom;
 
@@ -183,7 +182,7 @@ namespace CottonFMS.Fms.Sales
 
                 result.TotalCount = saleslist.Count;
         
-                result.SalesModel = GetPage(saleslist, page, pageSize);
+                result.SalesModel = GetPage(saleslist);
 
                 
                 return result;

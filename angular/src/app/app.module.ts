@@ -37,6 +37,44 @@ import { CreateUserDialogComponent } from '@app/users/create-user/create-user-di
 import { EditUserDialogComponent } from '@app/users/edit-user/edit-user-dialog.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { ResetPasswordDialogComponent } from './users/reset-password/reset-password.component';
+import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
+import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
+
+import { AssetsFormComponent } from './pages/Assets/assets-form/assets-form.component';
+import { AssetsListComponent } from './pages/Assets/assets-list/assets-list.component';
+
+import { AttendanceFormComponent } from './pages/Attendance/attendance-form/attendance-form.component';
+import { AttendanceListComponent } from './pages/Attendance/attendance-list/attendance-list.component';
+
+import { CustomersFormComponent } from './pages/Customers/customers-form/customers-form.component';
+import { CustomersListComponent } from './pages/Customers/customers-list/customers-list.component';
+
+import { EmployeesFormComponent } from './pages/Employees/employees-form/employees-form.component';
+import { EmployeesListComponent } from './pages/Employees/employees-list/employees-list.component';
+
+import { DocumentsFormComponent } from './pages/ImportantDocuments/documents-form/documents-form.component';
+import { DocumentsListComponent } from './pages/ImportantDocuments/documents-list/documents-list.component';
+
+import { InventoryFormComponent } from './pages/Inventory/inventory-form/inventory-form.component';
+import { InventoryListComponent } from './pages/Inventory/inventory-list/inventory-list.component';
+
+import { OrdersFormComponent } from './pages/Orders/orders-form/orders-form.component';
+import { OrdersListComponent } from './pages/Orders/orders-list/orders-list.component';
+
+import { ProductionFormComponent } from './pages/Production/production-form/production-form.component';
+import { ProductionListComponent } from './pages/Production/production-list/production-list.component';
+
+import { PurchasingFormComponent } from './pages/Purchasing/purchasing-form/purchasing-form.component';
+import { PurchasingListComponent } from './pages/Purchasing/purchasing-list/purchasing-list.component';
+
+import { ReportsFormComponent } from './pages/Reports/reports-form/reports-form.component';
+import { ReportsListComponent } from './pages/Reports/reports-list/reports-list.component';
+
+import { SetmanagerFormComponent } from './pages/SetManager/setmanager-form/setmanager-form.component';
+import { SetmanagerListComponent } from './pages/SetManager/setmanager-list/setmanager-list.component';
+
+import { VendorsFormComponent } from './pages/Vendors/vendors-form/vendors-form.component';
+import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +100,34 @@ import { ResetPasswordDialogComponent } from './users/reset-password/reset-passw
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ChangePasswordComponent,
-    ResetPasswordDialogComponent
+    ResetPasswordDialogComponent,
+    SalesFormComponent,
+    SalesListComponent,
+    AssetsFormComponent,
+    AssetsListComponent,
+    AttendanceFormComponent,
+    AttendanceListComponent,
+    CustomersFormComponent,
+    CustomersListComponent,
+    EmployeesFormComponent,
+    EmployeesListComponent,
+    DocumentsFormComponent,
+    DocumentsListComponent,
+    InventoryFormComponent,
+    InventoryListComponent,
+    OrdersFormComponent,
+    OrdersListComponent,
+    ProductionFormComponent,
+    ProductionListComponent,
+    PurchasingFormComponent,
+    PurchasingListComponent,
+    ReportsFormComponent,
+    ReportsListComponent,
+    SetmanagerFormComponent,
+    SetmanagerListComponent,
+    VendorsFormComponent,
+    VendorsListComponent,
+
   ],
   imports: [
     CommonModule,
@@ -88,7 +153,9 @@ import { ResetPasswordDialogComponent } from './users/reset-password/reset-passw
     // users
     CreateUserDialogComponent,
     EditUserDialogComponent,
-    ResetPasswordDialogComponent
+    ResetPasswordDialogComponent,
+    SalesFormComponent
+
   ]
 })
 export class AppModule {}
