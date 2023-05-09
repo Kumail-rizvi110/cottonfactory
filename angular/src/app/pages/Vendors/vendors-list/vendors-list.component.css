@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+  
+  <!-- Style the search button 
+  .search-button {
+    margin-right: 8px;
+  }
+  
+  <!-- Set a fixed height for the table 
+  .mat-table {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  <!-- Style the table rows and cells 
+  .mat-row, .mat-header-row {
+    display: flex;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #e0e0e0;
+    padding: 8px;
+  }
+  
+  .mat-cell, .mat-header-cell {
+    flex: 1;
+  }
+  
+  <!-- Style the paginator 
+  .mat-paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  <!-- Style the buttons in the Actions column 
+  .mat-cell .mat-button {
+    margin-right: 8px;
+  }
+  

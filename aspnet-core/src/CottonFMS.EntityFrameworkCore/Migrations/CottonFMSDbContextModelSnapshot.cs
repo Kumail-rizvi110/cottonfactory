@@ -1034,6 +1034,581 @@ namespace CottonFMS.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("CottonFMS.Fms.Assets.Assets", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Cost");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime>("DateOfBuying");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assets");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.AssetsMaintenance.AssetsMaintenance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("AssetsId");
+
+                    b.Property<decimal>("Cost");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<DateTime>("MaintenanceDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssetsId");
+
+                    b.ToTable("AssetsMaintenance");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.AssetsworkinginProduction.AssetsWorkingInProduction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("AssetsId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssetsId");
+
+                    b.ToTable("AssetsWorkingInProductionPayments");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Attendance.Attendance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttendanceMark");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<long?>("EmployeesId");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeesId");
+
+                    b.ToTable("Attendance");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonFiberInventory.CottonFiberInventory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonFiberPurchasedId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonFiberPurchasedId");
+
+                    b.ToTable("CottonFiberInventory");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonFiberPurchased.CottonFiberPurchased", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Quality");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CottonFiberPurchased");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonFiberUsedinProduction.CottonFiberUsedinProduction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonFiberInventoryId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Quality");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonFiberInventoryId");
+
+                    b.ToTable("CottonFiberUsedinProduction");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonInventory.CottonInventory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonProducedId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonProducedId");
+
+                    b.ToTable("CottonInventory");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonProduced.CottonProduced", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<long?>("ProductionPlanId");
+
+                    b.Property<string>("Quality");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductionPlanId");
+
+                    b.ToTable("CottonProduced");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Customers.Customers", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<int>("Phone");
+
+                    b.Property<string>("email");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Delivery.Delivery", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("CustomersId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<DateTime>("DeliveryDate");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<long?>("OrdersId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomersId");
+
+                    b.HasIndex("OrdersId");
+
+                    b.ToTable("Delivery");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Employees.Employees", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime>("DateOfJoinning");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Pay");
+
+                    b.Property<int>("Phone");
+
+                    b.Property<string>("Rank");
+
+                    b.Property<string>("email");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.EmployeesWorkingInProduction.EmployeesWorkingInProduction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<long?>("EmployeesId");
+
+                    b.Property<string>("Field");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeesId");
+
+                    b.ToTable("EmployeesWorkingInProduction");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Orders.Orders", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonInventoryId");
+
+                    b.Property<string>("CottonQuality");
+
+                    b.Property<int>("CottonQuantity");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("CustomersId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonInventoryId");
+
+                    b.HasIndex("CustomersId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Payments.Payments", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("CustomersId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<long?>("OrdersId");
+
+                    b.Property<DateTime>("PaymentDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomersId");
+
+                    b.HasIndex("OrdersId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.ProductionPlan.ProductionPlan", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonFiberUsedInProductionId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("NoOfAssets");
+
+                    b.Property<int>("NoOfEmployees");
+
+                    b.Property<DateTime>("ProductionDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonFiberUsedInProductionId")
+                        .IsUnique()
+                        .HasFilter("[CottonFiberUsedInProductionId] IS NOT NULL");
+
+                    b.ToTable("ProductionPlan");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Purchase.Purchase", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CottonFiberPurchasedId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<DateTime>("PurchaseDate");
+
+                    b.Property<long?>("VendorsId");
+
+                    b.Property<int>("amount");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CottonFiberPurchasedId")
+                        .IsUnique()
+                        .HasFilter("[CottonFiberPurchasedId] IS NOT NULL");
+
+                    b.HasIndex("VendorsId");
+
+                    b.ToTable("Purchase");
+                });
+
             modelBuilder.Entity("CottonFMS.Fms.Sales.Sales", b =>
                 {
                     b.Property<long>("Id")
@@ -1071,6 +1646,41 @@ namespace CottonFMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Vendors.Vendors", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<int>("Phone");
+
+                    b.Property<string>("email");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vendors");
                 });
 
             modelBuilder.Entity("CottonFMS.MultiTenancy.Tenant", b =>
@@ -1271,6 +1881,113 @@ namespace CottonFMS.Migrations
                     b.HasOne("CottonFMS.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.AssetsMaintenance.AssetsMaintenance", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Assets.Assets", "Assets")
+                        .WithMany()
+                        .HasForeignKey("AssetsId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.AssetsworkinginProduction.AssetsWorkingInProduction", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Assets.Assets", "Assets")
+                        .WithMany()
+                        .HasForeignKey("AssetsId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Attendance.Attendance", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Employees.Employees", "Employees")
+                        .WithMany()
+                        .HasForeignKey("EmployeesId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonFiberInventory.CottonFiberInventory", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonFiberPurchased.CottonFiberPurchased", "CottonFiberPurchased")
+                        .WithMany()
+                        .HasForeignKey("CottonFiberPurchasedId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonFiberUsedinProduction.CottonFiberUsedinProduction", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonFiberInventory.CottonFiberInventory", "CottonFiberInventory")
+                        .WithMany()
+                        .HasForeignKey("CottonFiberInventoryId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonInventory.CottonInventory", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonProduced.CottonProduced", "CottonProduced")
+                        .WithMany()
+                        .HasForeignKey("CottonProducedId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.CottonProduced.CottonProduced", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.ProductionPlan.ProductionPlan", "ProductionPlan")
+                        .WithMany()
+                        .HasForeignKey("ProductionPlanId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Delivery.Delivery", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Customers.Customers", "Customers")
+                        .WithMany()
+                        .HasForeignKey("CustomersId");
+
+                    b.HasOne("CottonFMS.Fms.Orders.Orders", "Orders")
+                        .WithMany()
+                        .HasForeignKey("OrdersId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.EmployeesWorkingInProduction.EmployeesWorkingInProduction", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Employees.Employees", "Employees")
+                        .WithMany()
+                        .HasForeignKey("EmployeesId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Orders.Orders", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonInventory.CottonInventory", "CottonInventory")
+                        .WithMany()
+                        .HasForeignKey("CottonInventoryId");
+
+                    b.HasOne("CottonFMS.Fms.Customers.Customers", "Customers")
+                        .WithMany()
+                        .HasForeignKey("CustomersId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Payments.Payments", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.Customers.Customers", "Customers")
+                        .WithMany()
+                        .HasForeignKey("CustomersId");
+
+                    b.HasOne("CottonFMS.Fms.Orders.Orders", "Orders")
+                        .WithMany()
+                        .HasForeignKey("OrdersId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.ProductionPlan.ProductionPlan", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonFiberUsedinProduction.CottonFiberUsedinProduction", "CottonFiberUsedinProduction")
+                        .WithOne("ProductionPlan")
+                        .HasForeignKey("CottonFMS.Fms.ProductionPlan.ProductionPlan", "CottonFiberUsedInProductionId");
+                });
+
+            modelBuilder.Entity("CottonFMS.Fms.Purchase.Purchase", b =>
+                {
+                    b.HasOne("CottonFMS.Fms.CottonFiberPurchased.CottonFiberPurchased", "CottonFiberPurchased")
+                        .WithOne("Purchase")
+                        .HasForeignKey("CottonFMS.Fms.Purchase.Purchase", "CottonFiberPurchasedId");
+
+                    b.HasOne("CottonFMS.Fms.Vendors.Vendors", "Vendors")
+                        .WithMany()
+                        .HasForeignKey("VendorsId");
                 });
 
             modelBuilder.Entity("CottonFMS.MultiTenancy.Tenant", b =>
