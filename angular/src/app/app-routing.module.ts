@@ -9,11 +9,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
-import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
-
-import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
-import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
-
+import { SalesListComponent } from './pages/sales/sales-list/sales-list.component'; 
 import { AssetsFormComponent } from './pages/Assets/assets-form/assets-form.component';
 import { AssetsListComponent } from './pages/Assets/assets-list/assets-list.component';
 
