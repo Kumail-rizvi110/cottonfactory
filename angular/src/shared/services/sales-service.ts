@@ -30,7 +30,7 @@ export class SalesService {
       return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Sales/Create',content_, options_) 
     }
 
-    PostSalesListPagination(values): Observable<any> {
+    PostSalesListPagination(values ,pageIndex, pageSize): Observable<any> {
         debugger
       let headers = new HttpHeaders({
           'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ export class SalesService {
 
       
 
-      return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Sales/PostFilterData' , values, options)
+      return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Sales/PostFilterData?page=' + pageIndex + '&pageSize=' + pageSize, values, options)
           .pipe(map(res => {
               
               this.$isDataLoaded.emit(res['result']);
