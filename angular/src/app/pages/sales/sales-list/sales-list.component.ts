@@ -169,7 +169,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 //import { PaginationService } from '@shared/services/pagination.service';
 import { SalesService } from '@shared/services/sales-service';
-
 /**
  * @title Table with pagination
  */
@@ -239,6 +238,11 @@ export class SalesListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
 
   delete(id: number){
     abp.message.confirm((""),

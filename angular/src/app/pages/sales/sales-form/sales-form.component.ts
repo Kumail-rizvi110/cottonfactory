@@ -22,7 +22,7 @@ import { SalesService } from '@shared/services/sales-service';
 })
 export class SalesFormComponent implements OnInit {
 
-
+editid : number;
   public btnshow : boolean = true
   public sales : SaleDto = new SaleDto()
      Saleform = new FormGroup({
@@ -34,6 +34,24 @@ export class SalesFormComponent implements OnInit {
       Date: new FormControl(""),
   });
   ngOnInit(): void {
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.saleService.GetById(this.editid).subscribe((Response) => {
+          
+        this.Saleform.controls.price.setValue(Response.result.price);
+        this.Saleform.controls.quantity.setValue(Response.result.quantity);
+        this.Saleform.controls.customer_id.setValue(Response.result.customer_id);
+        this.Saleform.controls.product_id.setValue(Response.result.product_id);
+        this.Saleform.controls.Date.setValue(Response.result.date);
+        this.Saleform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
     this.Saleform = this._formBuilder.group({
       NetCharge: ["", Validators.required,],
       product_id: [""],
