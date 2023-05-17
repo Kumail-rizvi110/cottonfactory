@@ -169,8 +169,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 //import { PaginationService } from '@shared/services/pagination.service';
 import { SalesService } from '@shared/services/sales-service';
-import { PaginationService } from 'ngx-pagination';
-
 /**
  * @title Table with pagination
  */
@@ -190,12 +188,12 @@ export class SalesListComponent implements OnInit {
 
   filterForm = new FormGroup({
     keyword: new FormControl(""),
-    //product: new FormControl(""),
+    product: new FormControl(""),
     DateFrom: new FormControl(""),
     DateTo: new FormControl("")
   });
   public itemSearchStatus;
-  displayedColumns: string[] = ['Date', 'Price', 'Quantity','NetCharge','Actions'];
+  displayedColumns: string[] = ['Customers', 'Product', 'Date', 'Price', 'Quantity','NetCharge','Actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @Input() public filterdValues;
   public Datefrom: string
@@ -211,8 +209,7 @@ export class SalesListComponent implements OnInit {
     // private itemRequestService: ItemRequestService,
     // private storeService: StoreService,
     //private paginationService: PaginationService,
-    private paginationService: PaginationService,
-
+  
     private salesService: SalesService,
 
 
@@ -241,6 +238,11 @@ export class SalesListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
 
   delete(id: number){
     abp.message.confirm((""),
@@ -287,7 +289,7 @@ Submit(){
       this.dataSource = new MatTableDataSource(result.salesModel)
       debugger
       this.totalCount = result.totalCount;
-
+     
     });
     debugger
  // }

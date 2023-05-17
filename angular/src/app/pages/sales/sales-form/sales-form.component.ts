@@ -22,10 +22,10 @@ import { SalesService } from '@shared/services/sales-service';
 })
 export class SalesFormComponent implements OnInit {
 
-
+editid : number;
   public btnshow : boolean = true
   public sales : SaleDto = new SaleDto()
-  Salesform = new FormGroup({
+     Saleform = new FormGroup({
       NetCharge: new FormControl(""),
       product_id: new FormControl(""),
       customer_id: new FormControl(""),
@@ -34,7 +34,25 @@ export class SalesFormComponent implements OnInit {
       Date: new FormControl(""),
   });
   ngOnInit(): void {
-    this.Salesform = this._formBuilder.group({
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.saleService.GetById(this.editid).subscribe((Response) => {
+          
+        this.Saleform.controls.price.setValue(Response.result.price);
+        this.Saleform.controls.quantity.setValue(Response.result.quantity);
+        this.Saleform.controls.customer_id.setValue(Response.result.customer_id);
+        this.Saleform.controls.product_id.setValue(Response.result.product_id);
+        this.Saleform.controls.Date.setValue(Response.result.date);
+        this.Saleform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+    this.Saleform = this._formBuilder.group({
       NetCharge: ["", Validators.required,],
       product_id: [""],
       customer_id: [""],
@@ -57,7 +75,7 @@ export class SalesFormComponent implements OnInit {
 
     private router: Router,
     private route: ActivatedRoute,
-    private SalesService : SalesService,
+    private saleService : SalesService,
     private _formBuilder : FormBuilder,
 
 
@@ -75,16 +93,15 @@ export class SalesFormComponent implements OnInit {
   
  save(){
 debugger
-  this.sales.price = this.Salesform.get("price").value;
- this.sales.quantity = this.Salesform.get("quantity").value;
-//  this.sales.customer_id = this.Salesform.get("customer_id").value;
-//  this.sales.product_id = this.Salesform.get("product_id").value;
- this.sales.NetCharge = this.Salesform.get("NetCharge").value;
- this.sales.Date = this.pipe.transform(this.Salesform.get("Date").value, 'MM/dd/yyyy');
+  this.sales.Price = this.Saleform.get("price").value;
+ this.sales.Quantity = this.Saleform.get("quantity").value;
+ this.sales.Customer_id = this.Saleform.get("customer_id").value;
+ this.sales.Product_id = this.Saleform.get("product_id").value;
+ this.sales.NetCharge = this.Saleform.get("NetCharge").value;
+ this.sales.Date = this.pipe.transform(this.Saleform.get("Date").value, 'MM/dd/yyyy');
 
  debugger
-  this.SalesService.create(this.sales)
-  
+  this.saleService.create(this.sales)
   .subscribe((res) => {
     debugger
     var mes = res['result'];
@@ -108,7 +125,7 @@ debugger
     },
     
     err => {
-     abp.message.error(err);
+      abp.message.error(err);
     });
   
     
