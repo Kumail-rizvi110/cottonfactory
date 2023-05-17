@@ -32,6 +32,9 @@
         public const string Pages_ImportantDocuments = "Pages.ImportantDocuments";
 
         public const string Pages_LiveCottonPriceTracker = "Pages.LiveCottonPriceTracker";
+        public const string Pages_Payments = "Pages.Payments";
+        public const string Pages_Delivery = "Pages.Delivery";
+
 
 
 

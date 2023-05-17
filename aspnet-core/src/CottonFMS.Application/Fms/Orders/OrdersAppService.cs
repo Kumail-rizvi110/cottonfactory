@@ -190,7 +190,7 @@ namespace CottonFMS.Fms.Orders
 
         }
 
-        public async Task<OrdersModel> GetVendorsById(int Id)
+        public async Task<OrdersModel> GetOrdersById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

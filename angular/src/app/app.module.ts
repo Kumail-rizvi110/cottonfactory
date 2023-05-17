@@ -70,11 +70,13 @@ import { PurchasingListComponent } from './pages/Purchasing/purchasing-list/purc
 import { ReportsFormComponent } from './pages/Reports/reports-form/reports-form.component';
 import { ReportsListComponent } from './pages/Reports/reports-list/reports-list.component';
 
-import { SetmanagerFormComponent } from './pages/SetManager/setmanager-form/setmanager-form.component';
-import { SetmanagerListComponent } from './pages/SetManager/setmanager-list/setmanager-list.component';
+import { PaymentFormComponent } from './pages/Payments/payment-form/payment-form.component';
+import { PaymentListComponent } from './pages/Payments/payment-list/payment-list.component';
 
 import { VendorsFormComponent } from './pages/Vendors/vendors-form/vendors-form.component';
 import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.component';
+import { DeliveryListComponent } from './pages/Delivery/delivery-list/delivery-list.component';
+import { DeliveryFormComponent } from './pages/Delivery/delivery-form/delivery-form.component';
 
 @NgModule({
   declarations: [
@@ -123,10 +125,14 @@ import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.
     PurchasingListComponent,
     ReportsFormComponent,
     ReportsListComponent,
-    SetmanagerFormComponent,
-    SetmanagerListComponent,
+    PaymentFormComponent,
+    PaymentListComponent,
     VendorsFormComponent,
     VendorsListComponent,
+    DeliveryListComponent,
+    DeliveryFormComponent,
+
+    // PaymentFormComponent,
 
   ],
   imports: [

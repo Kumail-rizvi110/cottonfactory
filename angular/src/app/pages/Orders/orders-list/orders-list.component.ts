@@ -3,7 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 //import { PaginationService } from '@shared/services/pagination.service';
-import { SalesService } from '@shared/services/sales-service';
+import { OrdersService } from '@shared/services/Orders-service';
+import { PaginationService } from 'ngx-pagination';
 
 /**
  * @title Table with pagination
@@ -29,7 +30,7 @@ export class OrdersListComponent implements OnInit {
     DateTo: new FormControl("")
   });
   public itemSearchStatus;
-  displayedColumns: string[] = ['Customers', 'Product', 'Date', 'Price', 'Quantity','NetCharge','Actions'];
+  displayedColumns: string[] = ['OrderDate', 'CottonQuality', 'CottonQuantity','Actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @Input() public filterdValues;
   public Datefrom: string
@@ -46,8 +47,8 @@ export class OrdersListComponent implements OnInit {
     // private itemRequestService: ItemRequestService,
     // private storeService: StoreService,
     //private paginationService: PaginationService,
-  
-    private salesService: SalesService,
+    private paginationService: PaginationService,
+    private ordersService: OrdersService,
 
 
   ) { }
@@ -74,6 +75,7 @@ export class OrdersListComponent implements OnInit {
     else
       return true;
   }
+  
 
 
   delete(id: number){
@@ -81,7 +83,7 @@ export class OrdersListComponent implements OnInit {
     undefined,
     (result: boolean) => {
       if (result) {
-        this.salesService.Delete(id).subscribe(res => {
+        this.ordersService.Delete(id).subscribe(res => {
           return abp.message.info("Deleted successfully", "Status");
         })
       }
@@ -108,17 +110,17 @@ Submit(){
     
 
     debugger
-    this.salesService.PostSalesListPagination(req).subscribe(      
+    this.ordersService.PostSalesListPagination(req).subscribe(      
     )
     this.Datefrom = this.filterForm.controls.DateFrom.value
     this.Dateto = this.filterForm.controls.DateTo.value
-    this.salesService.$isDataLoaded.subscribe(result => {
+    this.ordersService.$isDataLoaded.subscribe(result => {
       debugger
         //  this.isLoading = false;
        
     
       this.filterdValues = this.filterForm.value
-      this.dataSource = new MatTableDataSource(result.salesModel)
+      this.dataSource = new MatTableDataSource(result.ordersModel)
       debugger
       this.totalCount = result.totalCount;
      
@@ -137,4 +139,3 @@ export interface PeriodicElement {
   symbol: string;
 }
 const ELEMENT_DATA: PeriodicElement[] = [];
-

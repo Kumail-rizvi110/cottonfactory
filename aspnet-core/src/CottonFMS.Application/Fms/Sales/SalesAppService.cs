@@ -74,7 +74,7 @@ namespace CottonFMS.Fms.Sales
                            sales.price = input.price;
 
                             _repo.Insert(sales);
-                        return "Insert Successfully";
+                        return "1";
                         }
 
                     return "Error";

@@ -72,7 +72,7 @@ namespace CottonFMS.Fms.Customers
                     customers.Address = input.Address;
 
                     _repo.Insert(customers);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -184,7 +184,7 @@ namespace CottonFMS.Fms.Customers
 
         }
 
-        public async Task<CustomersModel> GetSaleById(int Id)
+        public async Task<CustomersModel> GetCustomersById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

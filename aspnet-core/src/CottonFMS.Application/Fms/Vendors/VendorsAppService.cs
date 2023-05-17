@@ -74,7 +74,7 @@ namespace CottonFMS.Fms.Vendors
                     vendors.Address = input.Address;
 
                     _repo.Insert(vendors);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";

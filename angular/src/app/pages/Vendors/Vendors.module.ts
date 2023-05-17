@@ -7,20 +7,12 @@ import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModul
 import { SharedModule } from '@shared/shared.module';
 import { ServiceModule } from '@shared/services/service.module';
 
-// const routes = [
-//   {
-//       path: "sales/sales-form",
-//       component: SalesFormComponent,
-//   },
-//   {
-//     path: "sales/sales-form/:id",
-//     component: SalesListComponent,
-//   },
-//   {
-//     path: "sales/sales-list",
-//     component: SalesListComponent,
-// }
-// ];
+const routes = [
+   {
+    path: "pages/Vendors/vendors-form/:id",
+    component: VendorsFormComponent,
+   }
+];
 
 
 
@@ -28,7 +20,7 @@ import { ServiceModule } from '@shared/services/service.module';
 @NgModule({
   declarations: [VendorsFormComponent],//SalesListComponent
   imports: [
-  //  RouterModule.forChild(routes),
+   RouterModule.forChild(routes),
     CommonModule,
     MatCardModule,
     MatButtonModule,
@@ -60,6 +52,7 @@ import { ServiceModule } from '@shared/services/service.module';
     SharedModule,
     ServiceModule
 ],
+exports: [RouterModule],
 providers: [MatDatepickerModule],
 })
 export class VendorsModule { }

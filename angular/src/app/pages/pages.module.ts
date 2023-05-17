@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { SalesModule } from './sales/sales.module';
 import { SharedModule } from '@shared/shared.module';
+import { VendorsModule } from './Vendors/Vendors.module';
+import { VendorsFormComponent } from './Vendors/vendors-form/vendors-form.component';
 
 
 
@@ -10,7 +12,9 @@ import { SharedModule } from '@shared/shared.module';
   imports: [
     SharedModule,
     CommonModule,
-    SalesModule
+    SalesModule,
+    VendorsModule,
+    VendorsFormComponent
   ],
    providers:[CurrencyPipe]
 })

@@ -11,7 +11,7 @@ namespace CottonFMS.Fms.Payments
         public int Amount { get; set; }
         public DateTime PaymentDate { get; set; }
 
-        public long? OrderId { get; set; }
+        public long? OrdersId { get; set; }
         public long? CustomersId { get; set; }
 
 

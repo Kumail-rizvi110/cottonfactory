@@ -171,12 +171,12 @@ namespace CottonFMS.Fms.Employees
                                 employeeslist = employeeslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                employeeslist = employeeslist.Where(x => x.DateOfJoinning == Convert.ToDateTime(searchValue)).ToList();
-                            }
-                            break;
+                        //case "DateOfJoinning":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        employeeslist = employeeslist.Where(x => x.DateOfJoinning == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
 
 
@@ -200,7 +200,7 @@ namespace CottonFMS.Fms.Employees
 
         }
 
-        public async Task<EmployeesModel> GetVendorsById(int Id)
+        public async Task<EmployeesModel> GetEmployeesById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

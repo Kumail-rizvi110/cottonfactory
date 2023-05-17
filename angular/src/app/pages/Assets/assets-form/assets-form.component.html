@@ -3,7 +3,7 @@
       <div fxLayout="column" fxLayoutAlign="center start">
           <div class="h1 mt-2">
               <mat-icon matSuffix class="disabled-text">edit</mat-icon>
-              Sales
+              Assets
           </div>
       </div>
   </div>
@@ -12,33 +12,59 @@
     <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
   
      <form class="mat-card mat-elevation-z8 p-24 mr-24" (keydown.enter)="$event.preventDefault()"
-      fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" #saleform="ngForm"
-      [formGroup]="Saleform" (ngSubmit)="save()">
+      fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" #assetsform="ngForm"
+      [formGroup]="Assetsform" (ngSubmit)="save()">
   
-          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
   
             <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
-              <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker" [max]="tomorrow" formControlName="Date"
-                  placeholder="Select Sale date" required>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-  
+                <mat-label>Date</mat-label>
+                 <input matInput formControlName="Date" type="number" placeholder="Date">
+                 </mat-form-field>
+
           <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
-            <mat-label>Customer</mat-label>
-             <input matInput formControlName="customer_id" type="number" placeholder="Customer">
+            <mat-label>FirstName</mat-label>
+             <input matInput formControlName="FirstName" type="date" placeholder="FirstName">
              </mat-form-field>
   
   
            <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
-           <mat-label>Price</mat-label>
-            <input matInput formControlName="price" type="number" placeholder="Price">
+           <mat-label>Cost</mat-label>
+            <input matInput formControlName="Cost" type="number" placeholder="Cost">
+            </mat-form-field>
+  
+  
+          </div> -->
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+            <!-- <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+              <mat-label>DateOfBuying</mat-label>
+              <input matInput [matDatepicker]="picker" [max]="tomorrow" formControlName="DateOfBuying"
+                  placeholder="Select Assets date" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+
+          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+            <mat-label>DateOfBuying</mat-label>
+             <input matInput formControlName="DateOfBuying" type="date" placeholder="date">
+             </mat-form-field>
+  
+          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+            <mat-label>FirstName</mat-label>
+             <input matInput formControlName="FirstName" type="text" placeholder="FirstName">
+             </mat-form-field>
+  
+  
+           <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+           <mat-label>Cost</mat-label>
+            <input matInput formControlName="Cost" type="number" placeholder="Price">
             </mat-form-field>
   
   
           </div>
-          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
   
             <mat-form-field fxFlex class="pr-4" appearance="fill">
               <mat-label>Quantity :</mat-label>
@@ -50,20 +76,20 @@
             <input matInput formControlName="NetCharge" type="number" required>
             <mat-icon matSuffix class="secondary-text">edit</mat-icon>
         </mat-form-field>
-          </div>
+          </div> -->
             <div fxLayout="row" style="margin-top: 30px;" fxLayoutAlign="end right" fxFlex="1 0 auto">
   
                 <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;"
-                 [routerLink]="['/home']">
-                 Cancel
+                 [routerLink]="['/app/pages/Assets/assets-list']">
+                 Back
                 </a>
   
                  <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16"
-                 [disabled]="!saleform.form.valid">
+                 [disabled]="!assetsform.form.valid">
                  Sale
                  </button>
                  <button mat-raised-button *ngIf="!btnshow" class="mat-accent ml-16"
-                  [disabled]="!saleform.form.valid">
+                  [disabled]="!assetsform.form.valid">
                  Update Changes
                  </button>
              </div>

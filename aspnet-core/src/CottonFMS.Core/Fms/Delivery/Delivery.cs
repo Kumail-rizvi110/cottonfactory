@@ -10,7 +10,7 @@ namespace CottonFMS.Fms.Delivery
     {
         public string Address { get; set; }
          public DateTime DeliveryDate { get; set; }
-        public long? OrderId { get; set; }
+        public long? OrdersId { get; set; }
         public long? CustomersId { get; set; }
         //public long? OrdersId { get; set; }
         //public long? CustomerId { get; set; }

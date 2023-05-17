@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CustomersService } from '@shared/services/Customers-service';
+import { PaginationService } from 'ngx-pagination';
 // import {Component, Input, OnInit, ViewChild} from '@angular/core';
 // import { FormControl, FormGroup } from '@angular/forms';
 // import {MatPaginator} from '@angular/material/paginator';
@@ -49,13 +50,15 @@ export class CustomersListComponent implements OnInit {
     // private itemRequestService: ItemRequestService,
     // private storeService: StoreService,
     //private paginationService: PaginationService,
-  
+    private paginationService: PaginationService,
+
     private CustomersService: CustomersService,
 
 
   ) { }
 
   ngOnInit() {
+    debugger
     let today = new Date();
     
     var fromdate = new Date();
@@ -80,6 +83,7 @@ export class CustomersListComponent implements OnInit {
 
 
   delete(id: number){
+    debugger
     abp.message.confirm((""),
     undefined,
     (result: boolean) => {
@@ -91,6 +95,48 @@ export class CustomersListComponent implements OnInit {
     }
   )
   }
+// Submit(){
+//   debugger
+//  // if (this.checkRequiredFields()) {
+//     if (this.filterForm.controls.DateFrom.value > this.filterForm.controls.DateTo.value) {
+//       abp.message.error("", "Invalid Date Range");
+//       return;
+//     }
+    
+//     debugger
+    
+   
+
+//     const req = new AdvanceQueryParameterDto();
+//     req.DateFrom =this.filterForm.controls.DateFrom.value;
+//     req.DateTo = this.filterForm.controls.DateTo.value;
+//     req.keyword = this.filterForm.controls.keyword.value;
+//     req.product = this.filterForm.controls.product.value;
+    
+
+//     debugger
+//     this.CustomersService.PostCustomersListPagination(req).subscribe(      
+//     )
+//     this.Datefrom = this.filterForm.controls.DateFrom.value
+//     this.Dateto = this.filterForm.controls.DateTo.value
+//     this.CustomersService.$isDataLoaded.subscribe(result => {
+//       debugger
+//         //  this.isLoading = false;
+       
+    
+//       this.filterdValues = this.filterForm.value
+//       this.dataSource = new MatTableDataSource(result.CustomersModel)
+//       debugger
+//       this.totalCount = result.totalCount;
+     
+//     });
+//     debugger
+//  // }
+//  // else {
+//   //  abp.message.error("Please Provide Valid Data");
+//  // }
+// }
+
 Submit(){
   debugger
  // if (this.checkRequiredFields()) {
@@ -121,7 +167,7 @@ Submit(){
        
     
       this.filterdValues = this.filterForm.value
-      this.dataSource = new MatTableDataSource(result.CustomersModel)
+      this.dataSource = new MatTableDataSource(result.customersModel)
       debugger
       this.totalCount = result.totalCount;
      

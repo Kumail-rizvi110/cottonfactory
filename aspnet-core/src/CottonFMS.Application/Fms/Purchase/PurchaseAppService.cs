@@ -76,7 +76,7 @@ namespace CottonFMS.Fms.Purchase
                     //payments.Address = input.Address;
 
                     _repo.Insert(purchase);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -155,12 +155,12 @@ namespace CottonFMS.Fms.Purchase
                                 purchaselist = purchaselist.Where(x => x.amount == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                purchaselist = purchaselist.Where(x => x.PurchaseDate == Convert.ToDateTime(searchValue)).ToList();
-                            }
-                            break;
+                        //case "Phone":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        purchaselist = purchaselist.Where(x => x.PurchaseDate == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
 
 

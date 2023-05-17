@@ -12,8 +12,8 @@
   <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
 
    <form class="mat-card mat-elevation-z8 p-24 mr-24" (keydown.enter)="$event.preventDefault()"
-    fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" #saleform="ngForm"
-    [formGroup]="Saleform" (ngSubmit)="save()">
+    fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" #salesform="ngForm"
+    [formGroup]="Salesform" (ngSubmit)="save()">
 
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
@@ -25,10 +25,10 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+        <!-- <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
           <mat-label>Customer</mat-label>
            <input matInput formControlName="customer_id" type="number" placeholder="Customer">
-           </mat-form-field>
+           </mat-form-field> -->
 
 
          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
@@ -54,16 +54,16 @@
           <div fxLayout="row" style="margin-top: 30px;" fxLayoutAlign="end right" fxFlex="1 0 auto">
 
               <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;"
-               [routerLink]="['/home']">
-               Cancel
+               [routerLink]="['/app/pages/sales/sales-list']">
+               Back
               </a>
 
                <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16"
-               [disabled]="!saleform.form.valid">
+               [disabled]="!salesform.form.valid">
                Sale
                </button>
                <button mat-raised-button *ngIf="!btnshow" class="mat-accent ml-16"
-                [disabled]="!saleform.form.valid">
+                [disabled]="!salesform.form.valid">
                Update Changes
                </button>
            </div>

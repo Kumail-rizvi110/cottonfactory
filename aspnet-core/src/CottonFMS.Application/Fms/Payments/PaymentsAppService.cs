@@ -49,7 +49,7 @@ namespace CottonFMS.Fms.Payments
                         tem.Amount = input.Amount;
                         tem.PaymentDate = input.PaymentDate;
                         tem.CustomersId = input.CustomersId;
-                        tem.OrderId = input.OrderId;
+                        tem.OrdersId = input.OrdersId;
                         //tem.Phone = input.Phone;
                         //tem.email = input.email;
                         //tem.Address = input.Address;
@@ -152,12 +152,12 @@ namespace CottonFMS.Fms.Payments
                                 paymentslist = paymentslist.Where(x => x.Amount == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                paymentslist = paymentslist.Where(x => x.PaymentDate == Convert.ToDateTime(searchValue)).ToList();
-                            }
-                            break;
+                        //case "Phone":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        paymentslist = paymentslist.Where(x => x.PaymentDate == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
 
 

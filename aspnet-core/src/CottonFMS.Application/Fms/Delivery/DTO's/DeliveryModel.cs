@@ -7,7 +7,7 @@ namespace CottonFMS.Fms.Delivery.DTO_s
 {
    public class DeliveryModel : EntityDto<long>
     {
-        public long? OrderId { get; set; }
+        public long? OrdersId { get; set; }
         public long? CustomersId { get; set; }
 
         public string Address { get; set; }

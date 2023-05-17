@@ -79,7 +79,7 @@ namespace CottonFMS.Fms.Attendance
                     //payments.Address = input.Address;
 
                     _repo.Insert(attendance);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -158,12 +158,12 @@ namespace CottonFMS.Fms.Attendance
                                 attendancelist = attendancelist.Where(x => x.AttendanceMark == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                attendancelist = attendancelist.Where(x => x.Date == Convert.ToDateTime(searchValue)).ToList();
-                            }
-                            break;
+                        //case "Phone":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        attendancelist = attendancelist.Where(x => x.Date == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
 
 

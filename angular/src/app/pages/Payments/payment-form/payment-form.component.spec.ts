@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetmanagerFormComponent } from './setmanager-form.component';
+import { PaymentFormComponent } from './payment-form.component';
 
-describe('SetmanagerFormComponent', () => {
-  let component: SetmanagerFormComponent;
-  let fixture: ComponentFixture<SetmanagerFormComponent>;
+describe('PaymentFormComponent', () => {
+  let component: PaymentFormComponent;
+  let fixture: ComponentFixture<PaymentFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetmanagerFormComponent ]
+      declarations: [ PaymentFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetmanagerFormComponent);
+    fixture = TestBed.createComponent(PaymentFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

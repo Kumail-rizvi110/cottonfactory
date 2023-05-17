@@ -75,7 +75,7 @@ namespace CottonFMS.Fms.Assets
                     //payments.Address = input.Address;
 
                     _repo.Insert(assets);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -154,13 +154,24 @@ namespace CottonFMS.Fms.Assets
                                 assetslist = assetslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
+                        //case "Phone":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        assetslist = assetslist.Where(x => x.DateOfBuying == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
+                        case "DateFrom":
                             if (searchValue != "" && searchValue != null)
                             {
-                                assetslist = assetslist.Where(x => x.DateOfBuying == Convert.ToDateTime(searchValue)).ToList();
+                                assetslist = assetslist.Where(x => Convert.ToDateTime(x.DateOfBuying) >= Convert.ToDateTime(searchValue)).ToList();
                             }
                             break;
-
+                        case "DateTo":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                assetslist = assetslist.Where(x => Convert.ToDateTime(x.DateOfBuying) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
 
 
                     }

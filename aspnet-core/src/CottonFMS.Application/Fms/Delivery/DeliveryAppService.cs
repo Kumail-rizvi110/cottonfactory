@@ -48,7 +48,7 @@ namespace CottonFMS.Fms.Delivery
                         //tem.customer_id = tem.Id;
                         tem.Address = input.Address;
                         tem.DeliveryDate = input.DeliveryDate;
-                        tem.OrderId = input.OrderId;
+                        tem.OrdersId = input.OrdersId;
                         tem.CustomersId = input.CustomersId;
                         //tem.Phone = input.Phone;
                         //tem.email = input.email;
@@ -68,14 +68,14 @@ namespace CottonFMS.Fms.Delivery
                     //sales.Id = input.Id;
                     delivery.Address = input.Address;
                     delivery.DeliveryDate = input.DeliveryDate;
-                    delivery.OrderId = input.OrderId;
+                    delivery.OrdersId = input.OrdersId;
                     delivery.CustomersId = input.CustomersId;
                     //payments.Phone = input.Phone;
                     //payments.email = input.email;
                     //payments.Address = input.Address;
 
                     _repo.Insert(delivery);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";

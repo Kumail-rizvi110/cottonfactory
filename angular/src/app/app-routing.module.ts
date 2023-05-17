@@ -9,7 +9,11 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
-import { SalesListComponent } from './pages/sales/sales-list/sales-list.component'; 
+import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
+
+// import { SalesFormComponent } from './pages/sales/sales-form/sales-form.component';
+// import { SalesListComponent } from './pages/sales/sales-list/sales-list.component';
+
 import { AssetsFormComponent } from './pages/Assets/assets-form/assets-form.component';
 import { AssetsListComponent } from './pages/Assets/assets-list/assets-list.component';
 
@@ -40,11 +44,15 @@ import { PurchasingListComponent } from './pages/Purchasing/purchasing-list/purc
 import { ReportsFormComponent } from './pages/Reports/reports-form/reports-form.component';
 import { ReportsListComponent } from './pages/Reports/reports-list/reports-list.component';
 
-import { SetmanagerFormComponent } from './pages/SetManager/setmanager-form/setmanager-form.component';
-import { SetmanagerListComponent } from './pages/SetManager/setmanager-list/setmanager-list.component';
+ import { PaymentFormComponent } from './pages/Payments/payment-form/payment-form.component';
+ import { PaymentListComponent } from './pages/Payments/payment-list/payment-list.component';
 
 import { VendorsFormComponent } from './pages/Vendors/vendors-form/vendors-form.component';
 import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.component';
+
+import { DeliveryFormComponent } from './pages/Delivery/delivery-form/delivery-form.component';
+import { DeliveryListComponent } from './pages/Delivery/delivery-list/delivery-list.component';
+
 
 @NgModule({
     imports: [
@@ -70,6 +78,8 @@ import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.
 
 
                     { path: 'pages/Employees/employees-form', component: EmployeesFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    { path: 'pages/Employees/employees-form/:id', component: EmployeesFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+
                     { path: 'pages/Employees/employees-list', component: EmployeesListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
 
                     { path: 'pages/ImportantDocuments/documents-form', component: DocumentsFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
@@ -90,11 +100,15 @@ import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.
                     { path: 'pages/Reports/reports-form', component: ReportsFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'pages/Reports/reports-list', component: ReportsListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
 
-                    { path: 'pages/Setmanager/setmanager-form', component: SetmanagerFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
-                    { path: 'pages/Setmanager/setmanager-list', component: SetmanagerListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                     { path: 'pages/Payments/payment-form', component: PaymentFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                     { path: 'pages/Payments/payment-list', component: PaymentListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
 
                     { path: 'pages/Vendors/vendors-form', component: VendorsFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'pages/Vendors/vendors-list', component: VendorsListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+
+                    { path: 'pages/Delivery/delivery-form', component: DeliveryFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    { path: 'pages/Delivery/delivery-list', component: DeliveryListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+
 
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },

@@ -24,8 +24,8 @@
                 Search
               </button>
               <a mat-raised-button type="button" class="mat-accent" style="margin-left: 2rem !important;"
-                [routerLink]="['/app/pages/sales/sales-form']">
-                New Sale
+                [routerLink]="['/app/pages/Orders/orders-form']">
+                New Orders
               </a>
             </div>
           </div>
@@ -37,21 +37,21 @@
     <table mat-table [dataSource]="dataSource" matSort style="width: 100% !important;">
         
         <!-- Position Column -->
-        <ng-container matColumnDef="Customers">
-            <th mat-header-cell *matHeaderCellDef> Customers </th>
-            <td mat-cell *matCellDef="let element"> {{element.customer_id}} </td>
+        <ng-container matColumnDef="OrderDate">
+            <th mat-header-cell *matHeaderCellDef> OrderDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
         </ng-container>
         
         <!-- Name Column -->
-        <ng-container matColumnDef="Product">
-            <th mat-header-cell *matHeaderCellDef> Product </th>
-            <td mat-cell *matCellDef="let element"> {{element.product_id}} </td>
+        <ng-container matColumnDef="CottonQuality">
+            <th mat-header-cell *matHeaderCellDef> CottonQuality </th>
+            <td mat-cell *matCellDef="let element"> {{element.cottonQuality}} </td>
         </ng-container>
         
         <!-- Weight Column -->
-        <ng-container matColumnDef="Date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.date | date: "dd-MM-yyyy" }} </td>
+        <ng-container matColumnDef="CottonQuantity">
+            <th mat-header-cell *matHeaderCellDef> CottonQuantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.cottonQuantity | date: "dd-MM-yyyy" }} </td>
     </ng-container>
     
     <!-- Symbol Column -->
@@ -74,7 +74,7 @@
             Action
         </th>
         <td mat-cell *matCellDef="let element">
-            <a mat-button color="accent" [routerLink]="['/pages/sales/sales-form/',element.id]">
+            <a mat-button color="accent" [routerLink]="['/pages/Orders/orders-form/',element.id]">
                 <mat-icon>edit</mat-icon>
             </a> 
             <button mat-button color="warn" (click)="delete(element.id)">

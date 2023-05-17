@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetmanagerListComponent } from './setmanager-list.component';
+import { DeliveryListComponent } from './delivery-list.component';
 
-describe('SetmanagerListComponent', () => {
-  let component: SetmanagerListComponent;
-  let fixture: ComponentFixture<SetmanagerListComponent>;
+describe('DeliveryListComponent', () => {
+  let component: DeliveryListComponent;
+  let fixture: ComponentFixture<DeliveryListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetmanagerListComponent ]
+      declarations: [ DeliveryListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetmanagerListComponent);
+    fixture = TestBed.createComponent(DeliveryListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -25,7 +25,7 @@ export class SalesFormComponent implements OnInit {
 
   public btnshow : boolean = true
   public sales : SaleDto = new SaleDto()
-     Saleform = new FormGroup({
+  Salesform = new FormGroup({
       NetCharge: new FormControl(""),
       product_id: new FormControl(""),
       customer_id: new FormControl(""),
@@ -34,7 +34,7 @@ export class SalesFormComponent implements OnInit {
       Date: new FormControl(""),
   });
   ngOnInit(): void {
-    this.Saleform = this._formBuilder.group({
+    this.Salesform = this._formBuilder.group({
       NetCharge: ["", Validators.required,],
       product_id: [""],
       customer_id: [""],
@@ -57,7 +57,7 @@ export class SalesFormComponent implements OnInit {
 
     private router: Router,
     private route: ActivatedRoute,
-    private saleService : SalesService,
+    private SalesService : SalesService,
     private _formBuilder : FormBuilder,
 
 
@@ -75,15 +75,16 @@ export class SalesFormComponent implements OnInit {
   
  save(){
 debugger
-  this.sales.Price = this.Saleform.get("price").value;
- this.sales.Quantity = this.Saleform.get("quantity").value;
- this.sales.Customer_id = this.Saleform.get("customer_id").value;
- this.sales.Product_id = this.Saleform.get("product_id").value;
- this.sales.NetCharge = this.Saleform.get("NetCharge").value;
- this.sales.Date = this.pipe.transform(this.Saleform.get("Date").value, 'MM/dd/yyyy');
+  this.sales.price = this.Salesform.get("price").value;
+ this.sales.quantity = this.Salesform.get("quantity").value;
+//  this.sales.customer_id = this.Salesform.get("customer_id").value;
+//  this.sales.product_id = this.Salesform.get("product_id").value;
+ this.sales.NetCharge = this.Salesform.get("NetCharge").value;
+ this.sales.Date = this.pipe.transform(this.Salesform.get("Date").value, 'MM/dd/yyyy');
 
  debugger
-  this.saleService.create(this.sales)
+  this.SalesService.create(this.sales)
+  
   .subscribe((res) => {
     debugger
     var mes = res['result'];
@@ -107,7 +108,7 @@ debugger
     },
     
     err => {
-      abp.message.error(err);
+     abp.message.error(err);
     });
   
     

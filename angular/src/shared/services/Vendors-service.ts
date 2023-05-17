@@ -39,7 +39,7 @@ export class VendorsService {
 
       
 
-      return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Vendors/PostFilterData' , values, options)
+      return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Vendors/PostFilterData', values, options)
           .pipe(map(res => {
               
               this.$isDataLoaded.emit(res['result']);
