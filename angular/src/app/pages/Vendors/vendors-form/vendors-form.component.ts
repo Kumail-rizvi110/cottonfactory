@@ -13,6 +13,8 @@ import { SalesService } from '@shared/services/sales-service';
   styleUrls: ['./vendors-form.component.css']
 })
 export class VendorsFormComponent implements OnInit {  
+  editid : number;
+  id : number;
   public btnshow : boolean = true
   public vendors : VendorsDto = new VendorsDto()
      Vendorsform = new FormGroup({
@@ -23,6 +25,26 @@ export class VendorsFormComponent implements OnInit {
       Address: new FormControl(""),
   });
   ngOnInit(): void {
+debugger
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.VendorsService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Vendorsform.controls.FirstName.setValue(Response.result.firstName);
+        this.Vendorsform.controls.LastName.setValue(Response.result.lastName);
+        this.Vendorsform.controls.Phone.setValue(Response.result.phone);
+        this.Vendorsform.controls.email.setValue(Response.result.email);
+        this.Vendorsform.controls.Address.setValue(Response.result.address);
+        // this.Vendorsform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Vendorsform = this._formBuilder.group({
       //NetCharge: ["", Validators.required,],
       FirstName: [""],
@@ -64,6 +86,8 @@ export class VendorsFormComponent implements OnInit {
   
  save(){
 debugger
+// this.vendors.id = this.id;
+this.vendors.Id= this.id;
   this.vendors.firstName = this.Vendorsform.get("FirstName").value;
  this.vendors.lastName = this.Vendorsform.get("LastName").value;
  this.vendors.phone = this.Vendorsform.get("Phone").value;
@@ -89,7 +113,12 @@ debugger
     }
  
    
-      
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

@@ -14,7 +14,11 @@ import { PaymentDto } from '@shared/Dto/PaymentDto';
   templateUrl: './payment-form.component.html',
   styleUrls: ['./payment-form.component.css']
 })
-export class PaymentFormComponent implements OnInit{  
+export class PaymentFormComponent implements OnInit{ 
+  
+  editid : number;
+  id : number;
+  
   public btnshow : boolean = true
   public payments : PaymentDto = new PaymentDto()
      Paymentsform = new FormGroup({
@@ -25,20 +29,45 @@ export class PaymentFormComponent implements OnInit{
       // Address: new FormControl(""),
   });
   ngOnInit(): void {
+    debugger
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.PaymentService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Paymentsform.controls.Amount.setValue(Response.result.amount);
+        // let date=this.pipe.transform(Response.result.paymentDate, 'MM/dd/yyyy');
+        // this.Paymentsform.controls.PaymentDate.setValue(date);
+
+
+        let req = new Date(this.pipe.transform(Response.result.paymentDate, 'yyyy/MM/dd'))
+        // this.LibraryForm.controls.Uploaddate.setValue(LBDate);
+        this.Paymentsform.controls.PaymentDate.setValue(this.pipe.transform(req, 'yyyy-MM-dd'))
+        // this.Paymentsform.controls.Phone.setValue(Response.result.phone);
+        // this.Paymentsform.controls.email.setValue(Response.result.email);
+        // this.Paymentsform.controls.Address.setValue(Response.result.address);
+        // this.Customersform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
     this.Paymentsform = this._formBuilder.group({
       //NetCharge: ["", Validators.required,],
       Amount: [""],
-      PaymentDate: [""],
+      //PaymentDate: [""],
       // Phone: [""],
       // email: [""],
       // Address: [""],
-      // Date: [
-      //   {
-      //     value: new Date(),
-      //     disabled: false,
-      // },
-      // Validators.required,
-      // ],
+      PaymentDate: [
+        {
+          value: new Date(),
+          disabled: false,
+      },
+      Validators.required,
+      ],
      
     });
   }
@@ -59,13 +88,14 @@ export class PaymentFormComponent implements OnInit{
   }
   tomorrow = new Date();
   pipe = new DatePipe('en-US')
-
+  // datePipe = new DatePipe("en-US");
 
 
 
   
  save(){
 debugger
+this.payments.Id= this.id;
   this.payments.Amount = this.Paymentsform.get("Amount").value;
   this.payments.PaymentDate = this.pipe.transform(this.Paymentsform.get("PaymentDate").value, 'MM/dd/yyyy');
 //   this.vendors.phone = this.Vendorsform.get("Phone").value;
@@ -90,7 +120,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

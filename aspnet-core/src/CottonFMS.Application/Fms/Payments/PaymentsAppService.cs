@@ -55,7 +55,7 @@ namespace CottonFMS.Fms.Payments
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -73,7 +73,7 @@ namespace CottonFMS.Fms.Payments
                     //payments.Address = input.Address;
 
                     _repo.Insert(payments);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -152,12 +152,25 @@ namespace CottonFMS.Fms.Payments
                                 paymentslist = paymentslist.Where(x => x.Amount == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
-                        //case "Phone":
-                        //    if (searchValue != "" && searchValue != null)
-                        //    {
-                        //        paymentslist = paymentslist.Where(x => x.PaymentDate == Convert.ToDateTime(searchValue)).ToList();
-                        //    }
-                        //    break;
+                        case "DateFrom":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                paymentslist = paymentslist.Where(x => Convert.ToDateTime(x.PaymentDate) >= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+                        case "DateTo":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                paymentslist = paymentslist.Where(x => Convert.ToDateTime(x.PaymentDate) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+
+                            //case "Phone":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        paymentslist = paymentslist.Where(x => x.PaymentDate == Convert.ToDateTime(searchValue)).ToList();
+                            //    }
+                            //    break;
 
 
 
@@ -181,7 +194,7 @@ namespace CottonFMS.Fms.Payments
 
         }
 
-        public async Task<PaymentsModel> GetVendorsById(int Id)
+        public async Task<PaymentsModel> GetPaymentsById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

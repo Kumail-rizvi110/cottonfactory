@@ -54,7 +54,7 @@ namespace CottonFMS.Fms.Customers
                         tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -155,14 +155,34 @@ namespace CottonFMS.Fms.Customers
                                 customerslist = customerslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
+
+                        case "Keyword1":
                             if (searchValue != "" && searchValue != null)
                             {
+                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
                                 customerslist = customerslist.Where(x => x.Phone == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
+                            //case "Phone":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        customerslist = customerslist.Where(x => x.Phone == Convert.ToInt32(searchValue)).ToList();
+                            //    }
+                            //    break;
+                            //case "DateFrom":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        customerslist = customerslist.Where(x => Convert.ToDateTime(x.Date) >= Convert.ToDateTime(searchValue)).ToList();
+                            //    }
+                            //    break;
+                            //case "DateTo":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        saleslist = customerslist.Where(x => Convert.ToDateTime(x.Date) <= Convert.ToDateTime(searchValue)).ToList();
+                            //    }
+                            //    break;
 
-                        
+
 
                     }
                 }

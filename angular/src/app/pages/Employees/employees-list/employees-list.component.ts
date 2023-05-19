@@ -35,7 +35,7 @@ export class EmployeesListComponent implements OnInit {
     DateTo: new FormControl("")
   });
   public itemSearchStatus;
-  displayedColumns: string[] = ['FirstName', 'LastName', 'email', 'Address', 'Pay','Rank','Phone','DateOfJoinning', 'Actions'];
+  displayedColumns: string[] = ['FirstName','LastName','email','Address','Pay','Rank','Phone','DateOfJoinning','Actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @Input() public filterdValues;
   public Datefrom: string
@@ -83,6 +83,12 @@ export class EmployeesListComponent implements OnInit {
     else
       return true;
   }
+
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
   
 
 
@@ -99,12 +105,12 @@ export class EmployeesListComponent implements OnInit {
   )
   }
 
-  edit( id : any){
+  // edit( id : any){
 
-    debugger
-    this.router.navigate(['Employees/employees-form/' + id]);
+  //   debugger
+  //   this.router.navigate([' Employees/employees-form/' + id]);
 
-  }
+  // }
 Submit(){
   debugger
  // if (this.checkRequiredFields()) {

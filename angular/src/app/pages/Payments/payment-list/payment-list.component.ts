@@ -97,6 +97,11 @@ export class PaymentListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
 
   delete(id: number){
     abp.message.confirm((""),
@@ -151,10 +156,10 @@ export class PaymentListComponent implements OnInit {
 //   //  abp.message.error("Please Provide Valid Data");
 //  // }
 // }
-edit(id: number){
-  debugger
-  this.router.navigate(["/pages/Payments/payment-form"]);      
-}
+// edit(id: number){
+//   debugger
+//   this.router.navigate(["/pages/Payments/payment-form"]);      
+// }
  
 Submit(){
   debugger

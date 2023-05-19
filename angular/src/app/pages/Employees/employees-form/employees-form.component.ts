@@ -27,7 +27,8 @@ import { EmployeesService } from '@shared/services/Employees-service';
   styleUrls: ['./employees-form.component.css']
 })
 export class EmployeesFormComponent implements OnInit {
-
+  editid : number;
+  id : number;
   dataSource: any
   public EditItems = []
   public element = []
@@ -46,9 +47,32 @@ export class EmployeesFormComponent implements OnInit {
 
 
   });
-  id: number
+  // id: number
 
   ngOnInit(): void {
+
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.employeesService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Employeesform.controls.FirstName.setValue(Response.result.firstName);
+        this.Employeesform.controls.LastName.setValue(Response.result.lastName);
+        this.Employeesform.controls.email.setValue(Response.result.email);
+        this.Employeesform.controls.Address.setValue(Response.result.address);
+        this.Employeesform.controls.Pay.setValue(Response.result.pay);
+        this.Employeesform.controls.Rank.setValue(Response.result.rank);
+        this.Employeesform.controls.Phone.setValue(Response.result.phone);
+        this.Employeesform.controls.DateOfJoinning.setValue(Response.result.dateOfJoinning);
+
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Employeesform = this._formBuilder.group({
       // NetCharge: ["", Validators.required,],
       FirstName: [""],
@@ -71,71 +95,71 @@ export class EmployeesFormComponent implements OnInit {
      
     });
 
-    if (window.location.href.split("/")[6] != undefined) {
-      this.btnshow = false;
-    }
-    if (this.id == null) {
-      this.id = this.route.snapshot.params.id;
+    // if (window.location.href.split("/")[6] != undefined) {
+    //   this.btnshow = false;
+    // }
+    // if (this.id == null) {
+    //   this.id = this.route.snapshot.params.id;
 
 
-      if (this.id) {
-        debugger
-        this.employeesService.EditIssue(this.id).subscribe((res) => {
-          debugger
-          console.log(res);
-          this.Employeesform.controls.FirstName.setValue(res["result"].firstName);
-          //this.currentPatientId = res['result'].patientId;
-          this.Employeesform.controls.LastName.setValue(res['result'].lastName);
-          debugger
+    //   if (this.id) {
+    //     debugger
+    //     this.employeesService.EditIssue(this.id).subscribe((res) => {
+    //       debugger
+    //       console.log(res);
+    //       this.Employeesform.controls.FirstName.setValue(res["result"].firstName);
+    //       //this.currentPatientId = res['result'].patientId;
+    //       this.Employeesform.controls.LastName.setValue(res['result'].lastName);
+    //       debugger
          
-          //this.IssueForm.controls.PatientId.setValue(res['result'].patientId);
-          this.Employeesform.controls.email.setValue(res["result"].email);
-          this.Employeesform.controls.Address.setValue(res["result"].address);
-          this.Employeesform.controls.Pay.setValue(res['result'].pay);
-          this.Employeesform.controls.Rank.setValue(res['result'].rank);
-          this.Employeesform.controls.Phone.setValue(res['result'].phone);
-          this.Employeesform.controls.DateOfJoinning.setValue(res['result'].dateOfJoinning);
+    //       //this.IssueForm.controls.PatientId.setValue(res['result'].patientId);
+    //       this.Employeesform.controls.email.setValue(res["result"].email);
+    //       this.Employeesform.controls.Address.setValue(res["result"].address);
+    //       this.Employeesform.controls.Pay.setValue(res['result'].pay);
+    //       this.Employeesform.controls.Rank.setValue(res['result'].rank);
+    //       this.Employeesform.controls.Phone.setValue(res['result'].phone);
+    //       this.Employeesform.controls.DateOfJoinning.setValue(res['result'].dateOfJoinning);
 
-          // this.loaditem(res['result'].storeId);
-          // this.IssueForm.controls.Notes.setValue(res['result'].notes);
-          // this.EditItems = res['result'].issueItems
+    //       // this.loaditem(res['result'].storeId);
+    //       // this.IssueForm.controls.Notes.setValue(res['result'].notes);
+    //       // this.EditItems = res['result'].issueItems
 
 
-          // this.mRNo=res["result"].mrno;
-          // this.patName=res["result"].pName;
-          // this.docName=res["result"].doctorName;
-          // this.iDate=res["result"].issueDate
-          var i;
-          for (i = 0; i <= this.EditItems.length; i++) {
-            const obj =
-            {
+    //       // this.mRNo=res["result"].mrno;
+    //       // this.patName=res["result"].pName;
+    //       // this.docName=res["result"].doctorName;
+    //       // this.iDate=res["result"].issueDate
+    //       var i;
+    //       for (i = 0; i <= this.EditItems.length; i++) {
+    //         const obj =
+    //         {
 
-              "firstName": res['result'].issueItems[i].firstName,
-              "lastName": res["result"].issueItems[i].lastName,
-              "email": res["result"].issueItems[i].email,
-              "address": res["result"].issueItems[i].address,
-              "pay":res["result"].issueItems[i].pay,
-              "rank":res["result"].issueItems[i].rank,
+    //           "firstName": res['result'].issueItems[i].firstName,
+    //           "lastName": res["result"].issueItems[i].lastName,
+    //           "email": res["result"].issueItems[i].email,
+    //           "address": res["result"].issueItems[i].address,
+    //           "pay":res["result"].issueItems[i].pay,
+    //           "rank":res["result"].issueItems[i].rank,
 
-              "phone":res["result"].issueItems[i].phone,
+    //           "phone":res["result"].issueItems[i].phone,
 
-             // "pay":res["result"].issueItems[i].pay,
+    //          // "pay":res["result"].issueItems[i].pay,
 
-              "dateOfJoinning": formatDate( res["result"].issueItems[i].dateOfJoinning,'MM/dd/yyyy','en-US'),
-              // "itemIssue":formatDate( res["result"].issueItems[i].itemIssue,'MM/dd/yyyy','en-US'),
-              // "StockQty": res["result"].issueItems[i].stockQty,
-              // "id":  res["result"].issueItems[i].id
+    //           "dateOfJoinning": formatDate( res["result"].issueItems[i].dateOfJoinning,'MM/dd/yyyy','en-US'),
+    //           // "itemIssue":formatDate( res["result"].issueItems[i].itemIssue,'MM/dd/yyyy','en-US'),
+    //           // "StockQty": res["result"].issueItems[i].stockQty,
+    //           // "id":  res["result"].issueItems[i].id
 
               
-            }
-            this.element.push(obj);
-            this.dataSource = new MatTableDataSource(this.element);
-          }
+    //         }
+    //         this.element.push(obj);
+    //         this.dataSource = new MatTableDataSource(this.element);
+    //       }
          
          
-        });
-      }
-    }
+    //     });
+    //   }
+    // }
   }
   constructor(
    
@@ -161,6 +185,7 @@ export class EmployeesFormComponent implements OnInit {
   
  save(){
 debugger
+ this.employees.Id = this.id;
   this.employees.FirstName = this.Employeesform.get("FirstName").value;
  this.employees.LastName = this.Employeesform.get("LastName").value;
  this.employees.email = this.Employeesform.get("email").value;
@@ -189,7 +214,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

@@ -23,6 +23,7 @@ import { SalesService } from '@shared/services/sales-service';
 export class SalesFormComponent implements OnInit {
 
 editid : number;
+id : number;
   public btnshow : boolean = true
   public sales : SaleDto = new SaleDto()
      Saleform = new FormGroup({
@@ -30,7 +31,7 @@ editid : number;
       product_id: new FormControl(""),
       customer_id: new FormControl(""),
       quantity: new FormControl(""),
-      price: new FormControl(""),
+      price: new FormControl(""), 
       Date: new FormControl(""),
   });
   ngOnInit(): void {
@@ -39,14 +40,18 @@ editid : number;
     if (editid != undefined && editid != null) {
      
       this.saleService.GetById(this.editid).subscribe((Response) => {
-          
+       this.id = this.editid  
         this.Saleform.controls.price.setValue(Response.result.price);
         this.Saleform.controls.quantity.setValue(Response.result.quantity);
         this.Saleform.controls.customer_id.setValue(Response.result.customer_id);
         this.Saleform.controls.product_id.setValue(Response.result.product_id);
-        this.Saleform.controls.Date.setValue(Response.result.date);
+        //this.Saleform.controls.Date.setValue(Response.result.date);
         this.Saleform.controls.NetCharge.setValue(Response.result.netCharge);
-        
+
+        let req = new Date(this.pipe.transform(Response.result.date, 'yyyy/MM/dd'))
+        // this.LibraryForm.controls.Uploaddate.setValue(LBDate);
+        this.Saleform.controls.Date.setValue(this.pipe.transform(req, 'yyyy-MM-dd'))
+
         localStorage.removeItem('editid');
         debugger
         this.editid = null;
@@ -93,6 +98,7 @@ editid : number;
   
  save(){
 debugger
+this.sales.Id = this.id;
   this.sales.Price = this.Saleform.get("price").value;
  this.sales.Quantity = this.Saleform.get("quantity").value;
  this.sales.Customer_id = this.Saleform.get("customer_id").value;
@@ -117,7 +123,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

@@ -18,7 +18,7 @@ export class EmployeesDto implements IEmployeesDto {
     Phone: Number | undefined;
     DateOfJoinning: string | undefined;
 
-    id: number
+    Id: number
    
     
     static fromJS(data: any): EmployeesDto 
@@ -44,7 +44,7 @@ export class EmployeesDto implements IEmployeesDto {
              data["DateOfJoinning"] = this.DateOfJoinning
 
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -60,5 +60,5 @@ export interface IEmployeesDto {
     DateOfJoinning: string | undefined;
 
     
-    id: number
+    Id: number
 }

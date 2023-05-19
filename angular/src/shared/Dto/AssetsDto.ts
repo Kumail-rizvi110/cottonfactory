@@ -14,7 +14,7 @@ export class AssetsDto implements IAssetsDto {
     DateOfBuying: string | undefined;
     
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): AssetsDto 
@@ -34,7 +34,7 @@ export class AssetsDto implements IAssetsDto {
              data["DateOfBuying"] = this.DateOfBuying
              
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -44,5 +44,5 @@ export interface IAssetsDto {
     Cost: number | undefined;
     DateOfBuying: string | undefined;
     
-    id: number
+    Id: number
 }

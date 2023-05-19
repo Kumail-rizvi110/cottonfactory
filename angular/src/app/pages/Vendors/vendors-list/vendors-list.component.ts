@@ -12,6 +12,7 @@ import { PaginationService } from 'ngx-pagination';
  */
 class AdvanceQueryParameterDto {
   keyword: string;
+  keyword1: number;
   product:number;
   DateFrom: Date;
   DateTo:Date;
@@ -28,6 +29,7 @@ export class VendorsListComponent implements OnInit {
 
   filterForm = new FormGroup({
     keyword: new FormControl(""),
+    keyword1: new FormControl(""),
     product: new FormControl(""),
     DateFrom: new FormControl(""),
     DateTo: new FormControl("")
@@ -77,6 +79,12 @@ export class VendorsListComponent implements OnInit {
     }
     else
       return true;
+  }
+
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
   }
 
 
@@ -133,10 +141,10 @@ export class VendorsListComponent implements OnInit {
 //   //  abp.message.error("Please Provide Valid Data");
 //  // }
 // }
-edit(id: number){
-  debugger
-  this.router.navigate(["/pages/Vendors/vendors-form"]);      
-}
+// edit(id: number){
+//   debugger
+//   this.router.navigate(["/pages/Vendors/vendors-form"]);      
+// }
  
 Submit(){
   debugger
@@ -154,6 +162,7 @@ Submit(){
     req.DateFrom =this.filterForm.controls.DateFrom.value;
     req.DateTo = this.filterForm.controls.DateTo.value;
     req.keyword = this.filterForm.controls.keyword.value;
+    req.keyword1 = this.filterForm.controls.keyword1.value;
     req.product = this.filterForm.controls.product.value;
     
 

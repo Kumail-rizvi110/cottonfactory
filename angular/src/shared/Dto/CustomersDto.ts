@@ -15,7 +15,7 @@ export class CustomersDto implements ICustomersDto {
     email: string | undefined;
     address: string | undefined;
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): CustomersDto 
@@ -36,7 +36,7 @@ export class CustomersDto implements ICustomersDto {
              data["email"] = this.email
              data["address"] =  this.address
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -48,5 +48,5 @@ export interface ICustomersDto {
     email: string | undefined;
     address: string | undefined;
     
-    id: number
+    Id: number
 }

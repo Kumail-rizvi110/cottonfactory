@@ -80,6 +80,11 @@ export class PurchasingListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
 
   delete(id: number){
     abp.message.confirm((""),
@@ -134,10 +139,10 @@ export class PurchasingListComponent implements OnInit {
 //   //  abp.message.error("Please Provide Valid Data");
 //  // }
 // }
-edit(id: number){
-  debugger
-  this.router.navigate(["/pages/Purchasing/purchasing-form"]);      
-}
+// edit(id: number){
+//   debugger
+//   this.router.navigate(["/pages/Purchasing/purchasing-form"]);      
+// }
  
 Submit(){
   debugger

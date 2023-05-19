@@ -14,6 +14,10 @@ import { PurchasingService } from '@shared/services/Purchasing-service';
   styleUrls: ['./purchasing-form.component.css']
 })
 export class PurchasingFormComponent implements OnInit {  
+  editid : number;
+  id : number;
+  
+
   public btnshow : boolean = true
   public purchasing : PurchasingDto = new PurchasingDto()
   Purchasingform = new FormGroup({
@@ -24,20 +28,41 @@ export class PurchasingFormComponent implements OnInit {
       // Address: new FormControl(""),
   });
   ngOnInit(): void {
+    debugger
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.PurchasingService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Purchasingform.controls.amount.setValue(Response.result.amount);
+        this.Purchasingform.controls.PurchaseDate.setValue(Response.result.purchaseDate);
+        console.log(Response.result.purchaseDate)
+        // this.Paymentsform.controls.Phone.setValue(Response.result.phone);
+        // this.Paymentsform.controls.email.setValue(Response.result.email);
+        // this.Paymentsform.controls.Address.setValue(Response.result.address);
+        // this.Customersform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Purchasingform = this._formBuilder.group({
       //NetCharge: ["", Validators.required,],
       amount: [""],
-      PurchaseDate: [""],
+      //PurchaseDate: [""],
       // Phone: [""],
       // email: [""],
       // Address: [""],
-      // Date: [
-      //   {
-      //     value: new Date(),
-      //     disabled: false,
-      // },
-      // Validators.required,
-      // ],
+      PurchaseDate: [
+        {
+          value: new Date(),
+          disabled: false,
+      },
+      Validators.required,
+      ],
      
     });
   }
@@ -65,8 +90,10 @@ export class PurchasingFormComponent implements OnInit {
   
  save(){
 debugger
+this.purchasing.Id = this.id;
   this.purchasing.amount = this.Purchasingform.get("amount").value;
-  this.purchasing.PurchaseDate = this.Purchasingform.get("PurchaseDate").value;
+  // this.purchasing.PurchaseDate = this.Purchasingform.get("PurchaseDate").value;
+  this.purchasing.PurchaseDate = this.pipe.transform(this.Purchasingform.get("PurchaseDate").value, 'MM/dd/yyyy');
 
 //  this.vendors.lastName = this.Vendorsform.get("LastName").value;
 //  this.vendors.phone = this.Vendorsform.get("Phone").value;
@@ -91,7 +118,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

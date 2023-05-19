@@ -62,7 +62,7 @@ namespace CottonFMS.Fms.Orders
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -82,7 +82,7 @@ namespace CottonFMS.Fms.Orders
 
 
                     _repo.Insert(orders);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";

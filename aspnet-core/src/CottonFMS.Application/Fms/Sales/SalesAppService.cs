@@ -47,7 +47,8 @@ namespace CottonFMS.Fms.Sales
                         {
                             
                             //sales.Id = input.Id;
-                            tem.customer_id = tem.Id;
+                            
+                            tem.customer_id = input.customer_id;
                             tem.price = input.price;
                             tem.quantity = input.quantity;
                             tem.Date = input.Date;
@@ -55,7 +56,7 @@ namespace CottonFMS.Fms.Sales
                             tem.price = input.price;
 
                             _repo.Update(tem);
-                            return "Updte Successfully";
+                            return "2";
                         }
                              
 

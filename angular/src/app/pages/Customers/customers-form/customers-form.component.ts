@@ -15,6 +15,8 @@ import { CustomersService } from '@shared/services/Customers-service';
   styleUrls: ['./customers-form.component.css']
 })
 export class CustomersFormComponent implements OnInit {  
+  editid : number;
+id : number;
   public btnshow : boolean = true
   public customers : CustomersDto = new CustomersDto()
      Customersform = new FormGroup({
@@ -25,6 +27,25 @@ export class CustomersFormComponent implements OnInit {
       Address: new FormControl(""),
   });
   ngOnInit(): void {
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.CustomersService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Customersform.controls.FirstName.setValue(Response.result.firstName);
+        this.Customersform.controls.LastName.setValue(Response.result.lastName);
+        this.Customersform.controls.Phone.setValue(Response.result.phone);
+        this.Customersform.controls.email.setValue(Response.result.email);
+        this.Customersform.controls.Address.setValue(Response.result.address);
+        // this.Customersform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Customersform = this._formBuilder.group({
       //NetCharge: ["", Validators.required,],
       FirstName: [""],
@@ -66,6 +87,7 @@ export class CustomersFormComponent implements OnInit {
   
  save(){
 debugger
+this.customers.Id= this.id;
   this.customers.firstName = this.Customersform.get("FirstName").value;
  this.customers.lastName = this.Customersform.get("LastName").value;
  this.customers.phone = this.Customersform.get("Phone").value;
@@ -91,7 +113,12 @@ debugger
     }
  
    
-      
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

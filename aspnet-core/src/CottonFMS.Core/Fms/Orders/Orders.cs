@@ -13,6 +13,8 @@ namespace CottonFMS.Fms.Orders
         public DateTime OrderDate { get; set; }
         public long? CustomersId { get; set; }
         public long? CottonInventoryId { get; set; }
+        public bool IsDelivered { get; set; }
+
 
         //public long? CustomersId { get; set; }
         //public long? CottonInventoryId { get; set; }

@@ -18,7 +18,7 @@ export class AttendanceDto implements IAttendanceDto {
     // Phone: Number | undefined;
     // DateOfJoinning: string | undefined;
 
-    id: number
+    Id: number
    
     
     static fromJS(data: any): AttendanceDto 
@@ -44,7 +44,7 @@ export class AttendanceDto implements IAttendanceDto {
             //  data["DateOfJoinning"] = this.DateOfJoinning
 
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -54,5 +54,5 @@ export interface IAttendanceDto {
     Date: string | undefined;
 
     
-    id: number
+    Id: number
 }

@@ -57,7 +57,7 @@ namespace CottonFMS.Fms.Attendance
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -187,7 +187,7 @@ namespace CottonFMS.Fms.Attendance
 
         }
 
-        public async Task<AttendanceModel> GetVendorsById(int Id)
+        public async Task<AttendanceModel> GetAttendanceById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

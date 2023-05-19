@@ -64,7 +64,7 @@ namespace CottonFMS.Fms.Employees
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -92,7 +92,7 @@ namespace CottonFMS.Fms.Employees
                     //payments.Address = input.Address;
 
                     _repo.Insert(employees);
-                    return "Insert Successfully";
+                    return "1";
                 }
 
                 return "Error";
@@ -171,12 +171,25 @@ namespace CottonFMS.Fms.Employees
                                 employeeslist = employeeslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        //case "DateOfJoinning":
-                        //    if (searchValue != "" && searchValue != null)
-                        //    {
-                        //        employeeslist = employeeslist.Where(x => x.DateOfJoinning == Convert.ToDateTime(searchValue)).ToList();
-                        //    }
-                        //    break;
+                        case "DateFrom":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                employeeslist = employeeslist.Where(x => Convert.ToDateTime(x.DateOfJoinning) >= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+                        case "DateTo":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                employeeslist = employeeslist.Where(x => Convert.ToDateTime(x.DateOfJoinning) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+
+                            //case "DateOfJoinning":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        employeeslist = employeeslist.Where(x => x.DateOfJoinning == Convert.ToDateTime(searchValue)).ToList();
+                            //    }
+                            //    break;
 
 
 

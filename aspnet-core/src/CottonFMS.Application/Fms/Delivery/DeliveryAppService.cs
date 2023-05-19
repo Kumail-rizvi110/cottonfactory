@@ -55,7 +55,7 @@ namespace CottonFMS.Fms.Delivery
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 

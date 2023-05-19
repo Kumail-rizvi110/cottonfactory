@@ -12,5 +12,7 @@ namespace CottonFMS.Fms.Customers.DTO_s
         public int Phone { get; set; }
         public string email { get; set; }
         public string Address { get; set; }
+        //public DateTime  Date { get; set; }
+
     }
 }

@@ -12,7 +12,7 @@ export class PaymentDto implements IPaymentDto {
     Amount: number | undefined;
      PaymentDate: string | undefined;
     
-    id: number
+     Id: number
    
     
     static fromJS(data: any): PaymentDto 
@@ -34,7 +34,7 @@ export class PaymentDto implements IPaymentDto {
             //  data["product_id"] =  this.Product_id
             //  data["NetCharge"] = this.NetCharge
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -47,5 +47,5 @@ export interface IPaymentDto {
     // Product_id: number | undefined;
     // NetCharge: Number | undefined;
     
-    id: number
+    Id: number
 }

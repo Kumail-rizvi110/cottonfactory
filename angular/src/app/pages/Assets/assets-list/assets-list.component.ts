@@ -77,6 +77,12 @@ export class AssetsListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
+
 
   delete(id: number){
     abp.message.confirm((""),

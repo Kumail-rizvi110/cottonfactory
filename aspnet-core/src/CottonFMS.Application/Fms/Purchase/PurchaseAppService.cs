@@ -56,7 +56,7 @@ namespace CottonFMS.Fms.Purchase
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -155,12 +155,25 @@ namespace CottonFMS.Fms.Purchase
                                 purchaselist = purchaselist.Where(x => x.amount == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
-                        //case "Phone":
-                        //    if (searchValue != "" && searchValue != null)
-                        //    {
-                        //        purchaselist = purchaselist.Where(x => x.PurchaseDate == Convert.ToDateTime(searchValue)).ToList();
-                        //    }
-                        //    break;
+                        case "DateFrom":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                purchaselist = purchaselist.Where(x => Convert.ToDateTime(x.PurchaseDate) >= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+                        case "DateTo":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                purchaselist = purchaselist.Where(x => Convert.ToDateTime(x.PurchaseDate) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+
+                            //case "Phone":
+                            //    if (searchValue != "" && searchValue != null)
+                            //    {
+                            //        purchaselist = purchaselist.Where(x => x.PurchaseDate == Convert.ToDateTime(searchValue)).ToList();
+                            //    }
+                            //    break;
 
 
 
@@ -184,7 +197,7 @@ namespace CottonFMS.Fms.Purchase
 
         }
 
-        public async Task<PurchaseModel> GetVendorsById(int Id)
+        public async Task<PurchaseModel> GetPurchaseById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

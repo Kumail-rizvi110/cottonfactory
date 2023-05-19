@@ -55,7 +55,7 @@ namespace CottonFMS.Fms.Assets
                         //tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -194,7 +194,7 @@ namespace CottonFMS.Fms.Assets
 
         }
 
-        public async Task<AssetsModel> GetVendorsById(int Id)
+        public async Task<AssetsModel> GetAssetsById(int Id)
         {
             var entity = await _repo.GetAll().Where(x => x.Id == Id).FirstOrDefaultAsync();
 

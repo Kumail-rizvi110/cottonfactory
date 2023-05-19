@@ -12,13 +12,14 @@ export class OrdersDto implements IOrdersDto {
     OrderDate: string | undefined;
     CottonQuality: string | undefined;
     CottonQuantity: number | undefined;
+    IsDelivered: boolean| undefined;
     // Price: number | undefined;
     
     // Customer_id: number | undefined;
     // Product_id: number | undefined;
     // NetCharge: Number | undefined;
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): OrdersDto 
@@ -36,11 +37,13 @@ export class OrdersDto implements IOrdersDto {
              data["orderDate"] =this.OrderDate 
              data["cottonQuality"] = this.CottonQuality
              data["cottonQuantity"] = this.CottonQuantity
+             data["IsDelivered"] = this.IsDelivered
+
             //  data["quantity"] = this.Quantity
             //  data["product_id"] =  this.Product_id
             //  data["NetCharge"] = this.NetCharge
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -50,6 +53,8 @@ export interface IOrdersDto {
     OrderDate: string | undefined;
     CottonQuality: string | undefined;
     CottonQuantity: number | undefined;
+    IsDelivered: boolean| undefined;
+
     // Date: string | undefined;
     // Price: number | undefined;
     // Quantity: number | undefined;
@@ -57,5 +62,5 @@ export interface IOrdersDto {
     // Product_id: number | undefined;
     // NetCharge: Number | undefined;
     
-    id: number
+    Id: number
 }

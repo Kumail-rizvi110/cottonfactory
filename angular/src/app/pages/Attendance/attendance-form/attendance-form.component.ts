@@ -29,7 +29,8 @@ import { AttendanceService } from '@shared/services/Attendance-service';
 })
 export class AttendanceFormComponent implements OnInit {
 
-
+  editid : number;
+id : number;
   public btnshow : boolean = true
   public attendance : AttendanceDto = new AttendanceDto()
   Attendanceform = new FormGroup({
@@ -45,10 +46,36 @@ export class AttendanceFormComponent implements OnInit {
 
   });
   ngOnInit(): void {
+    debugger
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.attendanceService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Attendanceform.controls.AttendanceMark.setValue(Response.result.attendanceMark);
+       // this.Attendanceform.controls.Date.setValue(Response.result.date);
+
+        
+        let req = new Date(this.pipe.transform(Response.result.date, 'yyyy/MM/dd'))
+        // this.LibraryForm.controls.Uploaddate.setValue(LBDate);
+        this.Attendanceform.controls.Date.setValue(this.pipe.transform(req, 'yyyy-MM-dd'))
+
+        // this.Attendanceform.controls.Phone.setValue(Response.result.phone);
+        // this.Attendanceform.controls.email.setValue(Response.result.email);
+        // this.Attendanceform.controls.Address.setValue(Response.result.address);
+        // this.Customersform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Attendanceform = this._formBuilder.group({
       // NetCharge: ["", Validators.required,],
       AttendanceMark: [""],
-      // Date: [""],
+       //Date: [""],
       // email: [""],
       // Address: [""],
       // Pay: [""],
@@ -91,9 +118,10 @@ export class AttendanceFormComponent implements OnInit {
   
  save(){
 debugger
+this.attendance.Id= this.id;
   this.attendance.AttendanceMark = this.Attendanceform.get("AttendanceMark").value;
- this.attendance.Date = this.Attendanceform.get("Date").value;
-//  this.employees.email = this.Employeesform.get("email").value;
+  this.attendance.Date = this.pipe.transform(this.Attendanceform.get("Date").value, 'MM/dd/yyyy');
+  //  this.employees.email = this.Employeesform.get("email").value;
 //  this.employees.Address = this.Employeesform.get("Address").value;
 //  this.employees.Pay = this.Employeesform.get("Pay").value;
 //  this.employees.Rank = this.Employeesform.get("Rank").value;
@@ -119,7 +147,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

@@ -12,7 +12,7 @@ export class DeliveryDto implements IDeliveryDto {
     DeliveryDate: string | undefined;
     Address: string | undefined;
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): DeliveryDto 
@@ -33,7 +33,7 @@ export class DeliveryDto implements IDeliveryDto {
             //  data["email"] = this.email
              data["Address"] =  this.Address
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -42,5 +42,5 @@ export interface IDeliveryDto {
     DeliveryDate: string | undefined;
     Address: string | undefined;
     
-    id: number
+    Id: number
 }

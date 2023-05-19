@@ -10,13 +10,13 @@ export class SaleDto implements ISaleDto {
         }
     }
     Date: string | undefined;
-    price: number | undefined;
-    quantity: number | undefined;
-    // customer_id: number | undefined;
-    // product_id: number | undefined;
+    Price: number | undefined;
+    Quantity: number | undefined;
+    Customer_id: number | undefined;
+    Product_id: number | undefined;
     NetCharge: Number | undefined;
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): SaleDto 
@@ -32,24 +32,24 @@ export class SaleDto implements ISaleDto {
         ;  
         if (data) {
              data["date"] =this.Date 
-            //  data["customer_id"] = this.customer_id
-             data["price"] = this.price
-             data["quantity"] = this.quantity
-            //  data["product_id"] =  this.product_id
+             data["customer_id"] = this.Customer_id
+             data["price"] = this.Price
+             data["quantity"] = this.Quantity
+             data["product_id"] =  this.Product_id
              data["NetCharge"] = this.NetCharge
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
 
 export interface ISaleDto {
     Date: string | undefined;
-    price: number | undefined;
-    quantity: number | undefined;
-    // customer_id: number | undefined;
-    // product_id: number | undefined;
+    Price: number | undefined;
+    Quantity: number | undefined;
+    Customer_id: number | undefined;
+    Product_id: number | undefined;
     NetCharge: Number | undefined;
     
-    id: number
+    Id: number
 }

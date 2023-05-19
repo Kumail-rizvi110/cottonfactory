@@ -15,7 +15,7 @@ export class VendorsDto implements IVendorsDto {
     email: string | undefined;
     address: string | undefined;
     
-    id: number
+    Id: number
    
     
     static fromJS(data: any): VendorsDto 
@@ -36,7 +36,7 @@ export class VendorsDto implements IVendorsDto {
              data["email"] = this.email
              data["address"] =  this.address
          
-             data["id"] = this.id
+             data["Id"] = this.Id
         }
     }
 }
@@ -48,5 +48,5 @@ export interface IVendorsDto {
     email: string | undefined;
     address: string | undefined;
     
-    id: number
+    Id: number
 }

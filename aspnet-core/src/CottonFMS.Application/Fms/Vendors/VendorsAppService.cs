@@ -56,7 +56,7 @@ namespace CottonFMS.Fms.Vendors
                         tem.Address = input.Address;
 
                         _repo.Update(tem);
-                        return "Updte Successfully";
+                        return "2";
                     }
 
 
@@ -153,14 +153,26 @@ namespace CottonFMS.Fms.Vendors
                                 vendorlist = vendorlist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
+                        case "Keyword1":
                             if (searchValue != "" && searchValue != null)
                             {
                                 vendorlist = vendorlist.Where(x => x.Phone == Convert.ToInt32(searchValue)).ToList();
                             }
                             break;
+                        //case "DateFrom":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        vendorlist = vendorlist.Where(x => Convert.ToDateTime(x.Date) >= Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
+                        //case "DateTo":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        vendorlist = vendorlist.Where(x => Convert.ToDateTime(x.Date) <= Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
-                     
+
 
                     }
                 }

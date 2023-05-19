@@ -23,6 +23,8 @@ import { AssetsService } from '@shared/services/Assets-service';
 })
 export class AssetsFormComponent implements OnInit {
 
+  editid : number;
+  id : number;
 
   public btnshow : boolean = true
   public assets : AssetsDto = new AssetsDto()
@@ -32,19 +34,45 @@ export class AssetsFormComponent implements OnInit {
       Date: new FormControl(""),
   });
   ngOnInit(): void {
+debugger
+    const editid = localStorage.getItem('editid');
+    this.editid =  parseInt(editid);
+    if (editid != undefined && editid != null) {
+     
+      this.assetsService.GetById(this.editid).subscribe((Response) => {
+       this.id = this.editid  
+        this.Assetsform.controls.FirstName.setValue(Response.result.firstName);
+        this.Assetsform.controls.Cost.setValue(Response.result.cost);
+        // this.Assetsform.controls.DateOfBuying.setValue(Response.result.dateOfBuying);
+
+        let req = new Date(this.pipe.transform(Response.result.dateOfBuying, 'yyyy/MM/dd'))
+        // this.LibraryForm.controls.Uploaddate.setValue(LBDate);
+        this.Assetsform.controls.DateOfBuying.setValue(this.pipe.transform(req, 'yyyy-MM-dd'))
+
+        // this.Attendanceform.controls.Phone.setValue(Response.result.phone);
+        // this.Attendanceform.controls.email.setValue(Response.result.email);
+        // this.Attendanceform.controls.Address.setValue(Response.result.address);
+        // this.Customersform.controls.NetCharge.setValue(Response.result.netCharge);
+        
+        localStorage.removeItem('editid');
+        debugger
+        this.editid = null;
+      });
+    }
+
     this.Assetsform = this._formBuilder.group({
      
       FirstName: [""],
       Cost: [""],
-      DateOfBuying: [""],
+      //DateOfBuying: [""],
 
-      // DateOfBuying: [
-      //   {
-      //     value: new Date(),
-      //     disabled: false,
-      // },
-      // Validators.required,
-      // ],
+      DateOfBuying: [
+        {
+          value: new Date(),
+          disabled: false,
+      },
+      Validators.required,
+      ],
      
     });
   }
@@ -72,6 +100,7 @@ export class AssetsFormComponent implements OnInit {
   
  save(){
 debugger
+this.assets.Id= this.id;
   this.assets.FirstName = this.Assetsform.get("FirstName").value;
  this.assets.Cost = this.Assetsform.get("Cost").value;
  this.assets.DateOfBuying = this.pipe.transform(this.Assetsform.get("DateOfBuying").value, 'MM/dd/yyyy');
@@ -94,7 +123,12 @@ debugger
      
     }
  
-   
+    else if(mes==2){
+      abp.message.success("SuccessFully Update", "Status");
+
+    }
+
+    window.history.back();
       
       
       

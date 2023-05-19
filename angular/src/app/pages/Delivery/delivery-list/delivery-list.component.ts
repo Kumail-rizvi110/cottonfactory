@@ -99,6 +99,11 @@ export class DeliveryListComponent implements OnInit {
       return true;
   }
 
+  edit(id: number){
+    
+    const editid = id.toString();
+    localStorage.setItem('editid', editid);
+  }
 
   delete(id: number){
     abp.message.confirm((""),
@@ -153,10 +158,10 @@ export class DeliveryListComponent implements OnInit {
 //   //  abp.message.error("Please Provide Valid Data");
 //  // }
 // }
-edit(id: number){
-  debugger
-  this.router.navigate(["/pages/Delivery/delivery-form"]);      
-}
+// edit(id: number){
+//   debugger
+//   this.router.navigate(["/pages/Delivery/delivery-form"]);      
+// }
  
 Submit(){
   debugger

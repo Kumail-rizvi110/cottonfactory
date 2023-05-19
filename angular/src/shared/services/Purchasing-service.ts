@@ -66,7 +66,7 @@ GetById(id : number) : Observable<any>
         "Content-Type": "application/json",
     });
     let options = { headers: headers };
-       return this.http.get<any>(this.REST_API_SERVER+'/api/services/app/Purchase/GetVendorsById?Id='+id, options);
+       return this.http.get<any>(this.REST_API_SERVER+'/api/services/app/Purchase/GetPurchaseById?Id='+id, options);
     }
 
   
