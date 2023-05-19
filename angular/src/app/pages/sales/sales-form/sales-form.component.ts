@@ -4,6 +4,7 @@ import { MatDialogRef, MatCheckboxChange } from '@angular/material';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { AppComponentBase } from '@shared/app-component-base';
+
 import {
   UserServiceProxy,
   CreateUserDto,
@@ -15,6 +16,11 @@ import { SaleDto } from '@shared/Dto/SaleDto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { SalesService } from '@shared/services/sales-service';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
 @Component({
   selector: 'app-sales-form',
   templateUrl: './sales-form.component.html',
@@ -22,8 +28,13 @@ import { SalesService } from '@shared/services/sales-service';
 })
 export class SalesFormComponent implements OnInit {
 
+  myControl = new FormControl();
+//  userList1: string[] = ['Option 1', 'Option 2', 'Option 3'];
+  public userList1 = [];
+  filteredOptions: Observable<string[]>;
 editid : number;
 id : number;
+public customer: string;
   public btnshow : boolean = true
   public sales : SaleDto = new SaleDto()
      Saleform = new FormGroup({
@@ -34,7 +45,13 @@ id : number;
       price: new FormControl(""), 
       Date: new FormControl(""),
   });
+  
   ngOnInit(): void {
+    this.getpatientListByName();
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
     const editid = localStorage.getItem('editid');
     this.editid =  parseInt(editid);
     if (editid != undefined && editid != null) {
@@ -92,9 +109,39 @@ id : number;
   tomorrow = new Date();
   pipe = new DatePipe('en-US')
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.userList1.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  onSelectChange(name): void {
+this.customer =name;
+  }
+  
+  onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    // Handle the selected option
+    console.log(event.option.value);
+  }
 
 
+  getname(name): void {
+    debugger
+this.customer =name;
+}
 
+  getpatientListByName(): void {
+    debugger
+            this.saleService.getList().subscribe((Response) => {
+              Response.forEach((element) => {
+                const user = {
+                    id: element.id,
+                    name: element.name,
+                };
+                debugger
+                this.userList1.push(user);
+            });
+      });
+}
   
  save(){
 debugger

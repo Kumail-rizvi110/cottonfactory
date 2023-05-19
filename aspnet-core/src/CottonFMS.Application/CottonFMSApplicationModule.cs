@@ -21,6 +21,7 @@ using CottonFMS.Fms.Sales;
 using CottonFMS.Fms.Sales.DTO_s;
 using CottonFMS.Fms.Vendors;
 using CottonFMS.Fms.Vendors.DTO_s;
+using CottonFMS.Fms.Customers.DTO_s;
 
 namespace CottonFMS
 {
@@ -81,6 +82,15 @@ namespace CottonFMS
 
                 config.CreateMap<Purchase, PurchaseModel>().ReverseMap();
 
+             //   config.CreateMap<GetCustomers ,Customers >()
+             //.ForMember(des => des.Id, opt => opt.MapFrom(src => src.Id))
+             //.ForMember(des => des.FirstName + " " + des.LastName, opt => opt.MapFrom(src => src.Name));
+                //.ForMember(des => des.Phone, opt => opt.MapFrom(src => src.Phone))
+                //.ForMember(des => des.email, opt => opt.MapFrom(src => src.email))
+                //.ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
+
+               // config.CreateMap<Customers , GetCustomers>().ReverseMap();
+
                 config.CreateMap<DeliveryModel, Delivery>()
               .ForMember(des => des.DeliveryDate, opt => opt.MapFrom(src => src.DeliveryDate))
               .ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
@@ -112,14 +122,14 @@ namespace CottonFMS
 
                 config.CreateMap<Assets, AssetsModel>().ReverseMap();
 
-                config.CreateMap<CustomersModel, Customers>()
+                config.CreateMap<CustomersModel, CottonFMS.Fms.Customers.Customers>()
              .ForMember(des => des.FirstName, opt => opt.MapFrom(src => src.FirstName))
              .ForMember(des => des.LastName, opt => opt.MapFrom(src => src.LastName))
              .ForMember(des => des.Phone, opt => opt.MapFrom(src => src.Phone))
              .ForMember(des => des.email, opt => opt.MapFrom(src => src.email))
              .ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
 
-                config.CreateMap<Customers, CustomersModel>().ReverseMap();
+                config.CreateMap<CottonFMS.Fms.Customers.Customers, CustomersModel>().ReverseMap();
 
             });
         }

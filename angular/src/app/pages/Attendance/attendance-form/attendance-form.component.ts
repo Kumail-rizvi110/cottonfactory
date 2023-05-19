@@ -148,7 +148,7 @@ this.attendance.Id= this.id;
     }
  
     else if(mes==2){
-      abp.message.success("SuccessFully Update", "Status");
+      abp.message.info("Attendance Already Marked", "Status");
 
     }
 

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { AppConsts } from "@shared/AppConsts";
+import { GetCustomersDto } from "@shared/Dto/GetCustomersDto";
 import { SaleDto } from "@shared/Dto/SaleDto";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -69,6 +70,14 @@ GetById(id : number) : Observable<any>
     let options = { headers: headers };
        return this.http.get<any>(this.REST_API_SERVER+'/api/services/app/Sales/GetSaleById?Id='+id, options);
     }
+    getList(): Observable<GetCustomersDto[]> {
+      let url_ = this.REST_API_SERVER + "/api/services/app/Customers/GetAllCustomers" ;
 
+      return this.http.get<GetCustomersDto[]>(url_).pipe(
+          map((response_: any) => {
+              return response_.result;
+          })
+      );
+  }
   
 }

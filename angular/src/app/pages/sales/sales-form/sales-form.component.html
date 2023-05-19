@@ -25,12 +25,48 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+        <mat-form-field>
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto (optionSelected)="onOptionSelected($event)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        
+        <!-- <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
           <mat-label>Customer</mat-label>
            <input matInput formControlName="customer_id" type="number" placeholder="Customer">
-           </mat-form-field>
+           </mat-form-field> -->
+           <mat-form-field fxFlex="50" class="pr-4" appearance="fill">
+            <mat-label>Customer</mat-label>
+            <input type="text" placeholder="Enter Customer Name " matInput
+                [matAutocomplete]="auto" (keyup)="getUserIdsFirstWay($event)"
+                formControlName="customer_id" patientName >
+            <mat-autocomplete #auto="matAutocomplete"  >
+             
+                <mat-option *ngFor="let user of userList1 "
+                    [value]="user.id">
+                    {{user.name}}
+                </mat-option>
+            
+            </mat-autocomplete>
+        </mat-form-field>
+           
+
+        <mat-form-field fxFlex="50" class="pr-4" appearance="fill">
+          <mat-label>Selected Customer</mat-label>
+          <input matInput readonly  value="{{customer}}">
+          <mat-icon matSuffix class="disabled-text">person</mat-icon>
+      </mat-form-field>
 
 
+           <input type="text" (keyup)="getUserIdsFirstWay($event)" id="userIdFirstWay" list="dynmicUserIds" />
+           <datalist id="dynmicUserIds">
+              <option *ngFor="let user of userList1" [value]="user.id">{{user.name}}</option>
+           </datalist>
+          
+          
          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
          <mat-label>Price</mat-label>
           <input matInput formControlName="price" type="number" placeholder="Price">

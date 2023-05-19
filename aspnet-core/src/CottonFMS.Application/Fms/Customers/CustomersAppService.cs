@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.EntityFrameworkCore;
 using CottonFMS.EntityFrameworkCore;
@@ -76,11 +77,7 @@ namespace CottonFMS.Fms.Customers
                 }
 
                 return "Error";
-
                 // return "Successfully Issued";
-
-
-
             }
 
             catch (Exception ex)
@@ -91,7 +88,30 @@ namespace CottonFMS.Fms.Customers
 
         }
 
+        public async Task<List<GetCustomers>> GetAllCustomers()
+        {
+            try
+            {
+                List<GetCustomers> result = new List<GetCustomers>();
+                var cus = _repo.GetAllListAsync();
+                // result = ObjectMapper.Map<List<GetCustomers>>(customers);
 
+                foreach ( var customer in cus.Result)
+                {
+                    GetCustomers Cus = new GetCustomers();
+                    Cus.Name = customer.FirstName + ' ' + customer.LastName;
+                    Cus.Id = (int)customer.Id;
+                    result.Add(Cus);
+                }
+               
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public async Task<string> Delete(long id)
         {
             try
