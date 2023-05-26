@@ -118,9 +118,26 @@ public customer: string;
 this.customer =name;
   }
   
+  // onOptionSelected(event: MatAutocompleteSelectedEvent) {
+  //   // Handle the selected option
+  //   console.log(event.option.value);
+  // }
+
+
+  // get(id: number) {
+  //   debugger;
+  //   console.log(id);
+  //   // Your logic here
+  // }
+  selectedUserName: string;
+  selectedUserId: number;
+
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
-    // Handle the selected option
-    console.log(event.option.value);
+    const selectedUser = this.userList1.find(user => user.id === event.option.value);
+    this.selectedUserName = selectedUser.name;
+    this.selectedUserId = selectedUser.id;
+    console.log(selectedUser.name);
+    // Your logic here
   }
 
 
