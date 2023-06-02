@@ -13,6 +13,8 @@ using CottonFMS.Fms.Delivery;
 using CottonFMS.Fms.Delivery.DTO_s;
 using CottonFMS.Fms.Employees;
 using CottonFMS.Fms.Employees.DTO_s;
+using CottonFMS.Fms.Orders;
+using CottonFMS.Fms.Orders.DTO_s;
 using CottonFMS.Fms.Payments;
 using CottonFMS.Fms.Payments.DTO_s;
 using CottonFMS.Fms.Purchase;
@@ -53,6 +55,16 @@ namespace CottonFMS
               .ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
 
                 config.CreateMap<Vendors, VendorsModel>().ReverseMap();
+
+
+                config.CreateMap<OrdersModel, Orders>()
+           .ForMember(des => des.Customers.FirstName +' '+ des.Customers.FirstName, opt => opt.MapFrom(src => src.CustomersName))
+           .ForMember(des => des.CottonInventoryId, opt => opt.MapFrom(src => src.CottonInventoryId))
+           .ForMember(des => des.CottonQuality, opt => opt.MapFrom(src => src.CottonQuality))
+           .ForMember(des => des.CustomersId, opt => opt.MapFrom(src => src.CustomersId))
+           ;
+
+                config.CreateMap<Orders, OrdersModel>().ReverseMap();
 
                 config.CreateMap<PaymentsModel, Payments>()
             .ForMember(des => des.Amount, opt => opt.MapFrom(src => src.Amount))

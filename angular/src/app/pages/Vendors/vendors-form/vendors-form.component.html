@@ -58,12 +58,12 @@
   
                 <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;"
                  [routerLink]="['/app/pages/Vendors/vendors-list']">
-                 Back
+          <b>Back/پیچھے</b>       
                 </a>
   
                  <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16"
                  [disabled]="!vendorsform.form.valid">
-                 Submit
+                <b> Submit/جمع</b> 
                  </button>
                  <button mat-raised-button *ngIf="!btnshow" class="mat-accent ml-16"
                   [disabled]="!vendorsform.form.valid">

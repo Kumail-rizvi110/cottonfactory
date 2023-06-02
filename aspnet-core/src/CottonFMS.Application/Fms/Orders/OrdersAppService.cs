@@ -144,7 +144,7 @@ namespace CottonFMS.Fms.Orders
                 var orderslist = new List<OrdersModel>();
 
 
-                var orders = await _repo.GetAll().Where(x => x.IsDeleted != true).OrderByDescending(x => x.CreationTime).ToListAsync();
+                var orders = await _repo.GetAll().Include(x=>x.Customers).Where(x => x.IsDeleted != true).OrderByDescending(x => x.CreationTime).ToListAsync();
 
                 orderslist = ObjectMapper.Map<List<OrdersModel>>(orders);
 

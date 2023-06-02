@@ -11,7 +11,9 @@ namespace CottonFMS.Fms.Orders.DTO_s
         public string CottonQuality { get; set; }
         public DateTime OrderDate { get; set; }
         //public long? CottonProducedId { get; set; }
+
         public long? CustomersId { get; set; }
+        public string CustomersName { get; set; }
         public long? CottonInventoryId { get; set; }
 
         public bool IsDelivered { get; set; }
