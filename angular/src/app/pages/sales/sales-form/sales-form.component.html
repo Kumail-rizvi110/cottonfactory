@@ -1,7 +1,7 @@
 <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
-  <div class="header accent p-24 h-56" fxLayout="row" fxLayoutAlign="start center">
+  <div class="header accent p-10 h-20" fxLayout="row" fxLayoutAlign="start center">
     <div fxLayout="column" fxLayoutAlign="center start">
-        <div class="h1 mt-2">
+        <div class="h3 mt-1">
             <mat-icon matSuffix class="disabled-text">edit</mat-icon>
             Sales
         </div>
@@ -15,22 +15,65 @@
     fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" #saleform="ngForm"
     [formGroup]="Saleform" (ngSubmit)="save()">
 
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" style="margin-top: 9px !important; margin-left: 7px !important;">
 
-          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+          <mat-form-field  fxFlex="25" class="pr-4" appearance="fill" style="margin-top: 9px !important;width:20%;margin-left: 3px;margin-right: 3px !important; display:inline-block !important;">
             <mat-label>Date</mat-label>
             <input matInput [matDatepicker]="picker" [max]="tomorrow" formControlName="Date"
                 placeholder="Select Sale date" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-
-        <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
+<!-- 
+        <mat-form-field class="col-6" fxFlex="25" class="pr-4" appearance="fill" style="max-width: 50%;">
+          
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto (optionSelected)="onOptionSelected($event)">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field> -->
+        
+        <!-- <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
           <mat-label>Customer</mat-label>
            <input matInput formControlName="customer_id" type="number" placeholder="Customer">
-           </mat-form-field>
+           </mat-form-field> -->
+           <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width:30% !important;margin-right: 3px !important;display:inline-block !important;">
+              <mat-label>Customer</mat-label>
+              <input type="text" placeholder="Enter Customer Name" matInput [matAutocomplete]="auto" (keyup)="getUserIdsFirstWay($event)" formControlName="customer_id" [(ngModel)]="selectedUserId">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+                <mat-option *ngFor="let user of userList1" [value]="user.id">
+                    {{user.name}}
+                </mat-option>
+            
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width: 30%;margin-right: 3px !important; display:inline-block !important;">
+          <mat-label>Selected Customer</mat-label>
+          <input matInput readonly  value="{{customer}}">
+          <mat-icon matSuffix class="disabled-text">person</mat-icon>
+         </mat-form-field> -->
+         <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width: 30%;margin-right: 3px !important;display:inline-block !important;">
+          <mat-label>Selected Customer</mat-label>
+          <input matInput readonly [value]="selectedUserName">
+          <mat-icon matSuffix class="disabled-text">person</mat-icon>
+        </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
 
+        
+
+
+           <!-- <input type="text" (keyup)="getUserIdsFirstWay($event)" id="userIdFirstWay" list="dynmicUserIds" />
+           <datalist id="dynmicUserIds">
+              <option *ngFor="let user of userList1" [value]="user.id">{{user.name}}</option>
+           </datalist> -->
+          
+          
          <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
          <mat-label>Price</mat-label>
           <input matInput formControlName="price" type="number" placeholder="Price">

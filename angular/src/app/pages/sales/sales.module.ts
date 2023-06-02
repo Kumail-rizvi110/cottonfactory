@@ -36,6 +36,7 @@ import { ServiceModule } from '@shared/services/service.module';
     MatProgressSpinnerModule,
     MatAutocompleteModule,
    // TextMaskModule,
+   MatAutocompleteModule,
     MatDividerModule,
     MatCheckboxModule,
     MatButtonModule,
