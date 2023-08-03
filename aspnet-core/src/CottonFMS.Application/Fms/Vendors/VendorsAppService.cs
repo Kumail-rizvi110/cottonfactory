@@ -146,14 +146,14 @@ namespace CottonFMS.Fms.Vendors
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
+                        case "Name":
                             if (searchValue != "" && searchValue != null)
                             {
                                 //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
                                 vendorlist = vendorlist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
-                        case "Keyword1":
+                        case "Phone":
                             if (searchValue != "" && searchValue != null)
                             {
                                 vendorlist = vendorlist.Where(x => x.Phone == Convert.ToInt32(searchValue)).ToList();

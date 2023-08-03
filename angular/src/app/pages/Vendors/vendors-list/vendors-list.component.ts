@@ -12,7 +12,9 @@ import { PaginationService } from 'ngx-pagination';
  */
 class AdvanceQueryParameterDto {
   keyword: string;
-  keyword1: number;
+  Phone: number;
+  Name: number;
+
   product:number;
   DateFrom: Date;
   DateTo:Date;
@@ -29,7 +31,9 @@ export class VendorsListComponent implements OnInit {
 
   filterForm = new FormGroup({
     keyword: new FormControl(""),
-    keyword1: new FormControl(""),
+    Phone: new FormControl(""),
+    Name: new FormControl(""),
+
     product: new FormControl(""),
     DateFrom: new FormControl(""),
     DateTo: new FormControl("")
@@ -162,7 +166,9 @@ Submit(){
     req.DateFrom =this.filterForm.controls.DateFrom.value;
     req.DateTo = this.filterForm.controls.DateTo.value;
     req.keyword = this.filterForm.controls.keyword.value;
-    req.keyword1 = this.filterForm.controls.keyword1.value;
+    req.Phone = this.filterForm.controls.Phone.value;
+    req.Name = this.filterForm.controls.Name.value;
+
     req.product = this.filterForm.controls.product.value;
     
 

@@ -11,6 +11,11 @@ export class PurchasingDto implements IPurchasingDto {
     }
     amount: number | undefined;
     PurchaseDate: string | undefined;
+    Name: string | undefined;
+    Description: string | undefined;
+    Quality: string | undefined;
+    Quantity: number | undefined;
+
     // phone: number | undefined;
     // email: string | undefined;
     // address: string | undefined;
@@ -32,6 +37,11 @@ export class PurchasingDto implements IPurchasingDto {
         if (data) {
              data["amount"] =this.amount 
              data["PurchaseDate"] = this.PurchaseDate
+             data["Name"] = this.Name
+             data["Decription"] = this.Description
+             data["Quqality"] = this.Quality
+             data["Quantity"] = this.Quantity
+
             //  data["phone"] = this.phone
             //  data["email"] = this.email
             //  data["address"] =  this.address
@@ -44,6 +54,10 @@ export class PurchasingDto implements IPurchasingDto {
 export interface IPurchasingDto {
     amount: number | undefined;
     PurchaseDate: string | undefined;
+    Name: string | undefined;
+    Description: string | undefined;
+    Quality: string | undefined;
+    Quantity: number | undefined;
     // phone: number | undefined;
     // email: string | undefined;
     // address: string | undefined;

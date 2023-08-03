@@ -11,7 +11,7 @@ export class DeliveryDto implements IDeliveryDto {
     }
     DeliveryDate: string | undefined;
     Address: string | undefined;
-    
+    CustomersId: number | undefined;
     Id: number
    
     
@@ -32,7 +32,8 @@ export class DeliveryDto implements IDeliveryDto {
             //  data["phone"] = this.phone
             //  data["email"] = this.email
              data["Address"] =  this.Address
-         
+             data["CustomersId"] =  this.CustomersId
+
              data["Id"] = this.Id
         }
     }
@@ -41,6 +42,7 @@ export class DeliveryDto implements IDeliveryDto {
 export interface IDeliveryDto {
     DeliveryDate: string | undefined;
     Address: string | undefined;
-    
+    CustomersId: number | undefined;
+
     Id: number
 }

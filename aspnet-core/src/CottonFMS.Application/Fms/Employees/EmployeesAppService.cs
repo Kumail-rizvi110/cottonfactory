@@ -164,13 +164,7 @@ namespace CottonFMS.Fms.Employees
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
-                                employeeslist = employeeslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
-                            }
-                            break;
+                      
                         case "DateFrom":
                             if (searchValue != "" && searchValue != null)
                             {
@@ -183,7 +177,13 @@ namespace CottonFMS.Fms.Employees
                                 employeeslist = employeeslist.Where(x => Convert.ToDateTime(x.DateOfJoinning) <= Convert.ToDateTime(searchValue)).ToList();
                             }
                             break;
-
+                        case "Name":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                                employeeslist = employeeslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
+                            }
+                            break;
                             //case "DateOfJoinning":
                             //    if (searchValue != "" && searchValue != null)
                             //    {
@@ -221,6 +221,32 @@ namespace CottonFMS.Fms.Employees
 
             return result;
         }
+
+        public async Task<List<GetEmployees>> GetAllEmployees()
+        {
+            try
+            {
+                List<GetEmployees> result = new List<GetEmployees>();
+                var emp = _repo.GetAllListAsync();
+                // result = ObjectMapper.Map<List<GetCustomers>>(customers);
+
+                foreach (var employees in emp.Result)
+                {
+                    GetEmployees Emp = new GetEmployees();
+                    Emp.Name = employees.FirstName + ' ' + employees.LastName;
+                    Emp.Id = (int)employees.Id;
+                    result.Add(Emp);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
 
     }
 }

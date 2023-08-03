@@ -8,9 +8,10 @@ namespace CottonFMS.Fms.Attendance
 {
   public  class Attendance : FullAuditedEntity<long>
     {
-        public string AttendanceMark { get; set; }
+        public bool AttendanceMark { get; set; }
         public DateTime Date { get; set; }
         public long? EmployeesId { get; set; }
+        public bool isChecked { get; set; }
 
 
         //public long? EmployeesId { get; set; }

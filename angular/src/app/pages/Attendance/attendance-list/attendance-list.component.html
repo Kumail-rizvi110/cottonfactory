@@ -18,14 +18,15 @@
             <input matInput type="date" formControlName="DateTo"  required/>
           </mat-form-field>
         </div>
-        <div class="row" style="padding-top: 2rem;float: right;margin-right: 2rem; ">
+        <div class="row" style="padding-top: 1rem;float: right;margin-right: 2rem; ">
           <div fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm style="padding-left: 20px !important; margin-top: 20px !important;">
-            <button type="submit" mat-raised-button color="primary" class="search-button mr-8 " [disabled]="loading">      
-              Search
+            <button type="submit" mat-raised-button color="primary" class="search-button mr-8 " [disabled]="loading">         
+              <b>Search/تلاش کریں</b>  
             </button>
             <a mat-raised-button type="button" class="mat-accent" style="margin-left: 2rem !important;"
               [routerLink]="['/app/pages/Attendance/attendance-form']">
-              New Attendance
+               <b>New Attendance/حاضری</b> 
+
             </a>
           </div>
         </div>

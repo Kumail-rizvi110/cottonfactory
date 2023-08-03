@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20190111071724_Upgraded_To_Abp_v4_1_0.cs" />
     <Compile Remove="Migrations\20230430084748_blabla.cs" />
     <Compile Remove="Migrations\20230430084748_blabla.Designer.cs" />
+    <Compile Remove="Migrations\20230609083655_add_employees_teams_tbl_details.cs" />
+    <Compile Remove="Migrations\20230609083655_add_employees_teams_tbl_details.Designer.cs" />
+    <Compile Remove="Migrations\20230615073008_add_ProductionPlan_tbl.cs" />
+    <Compile Remove="Migrations\20230615073008_add_ProductionPlan_tbl.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />

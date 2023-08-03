@@ -13,6 +13,7 @@ import { PaginationService } from 'ngx-pagination';
  */
 class AdvanceQueryParameterDto {
   keyword: string;
+  Name:string;
   product:number;
   DateFrom: Date;
   DateTo:Date;
@@ -29,12 +30,13 @@ export class PurchasingListComponent implements OnInit {
 
   filterForm = new FormGroup({
     keyword: new FormControl(""),
+    Name: new FormControl(""),
     product: new FormControl(""),
     DateFrom: new FormControl(""),
     DateTo: new FormControl("")
   });
   public itemSearchStatus;
-  displayedColumns: string[] = ['PurchaseDate', 'Amount', 'Actions'];
+  displayedColumns: string[] = ['PurchaseDate','Name','Quality','Quantity','Amount','Actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @Input() public filterdValues;
   public Datefrom: string
@@ -159,6 +161,8 @@ Submit(){
     const req = new AdvanceQueryParameterDto();
     req.DateFrom =this.filterForm.controls.DateFrom.value;
     req.DateTo = this.filterForm.controls.DateTo.value;
+
+    req.Name = this.filterForm.controls.Name.value;
     req.keyword = this.filterForm.controls.keyword.value;
     req.product = this.filterForm.controls.product.value;
     

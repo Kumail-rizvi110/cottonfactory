@@ -5,27 +5,34 @@
     <form class="mat-card mat-elevation-z4 " fxLayout="row" fxLayoutAlign="space-between center" fxFlex 
     [formGroup]="filterForm" (ngSubmit)="Submit()">
       <div class="row mat-card mat-elevation-z4 pt-20 pr-8 pb-8 pl-8" style="padding-left: 100px !important;">
-        <div class="col-md-4">
+        <div class="col-md-2">
               
-          <mat-form-field fxFlex="50" class="pr-4" style="padding-top: 2rem;">
+          <mat-form-field fxFlex="10" class="pr-4" style="padding-top: 2rem;">
             <mat-label>Date From</mat-label>
             <input matInput type="date" formControlName="DateFrom" required/>
           </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
           <mat-form-field fxFlex="10" class="pr-4" style="padding-top: 2rem;">
             <mat-label>Date To</mat-label>
             <input matInput type="date" formControlName="DateTo"  required/>
           </mat-form-field>
         </div>
-        <div class="row" style="padding-top: 2rem;float: right;margin-right: 2rem; ">
+        <div class="col-md-2">
+          <mat-form-field fxFlex="10" class="pr-4" style="padding-top: 2rem;">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="Name"  required/>
+          </mat-form-field>
+        </div>
+        <div class="row" style="padding-top: 1rem;float: right;margin-right: 2rem; ">
           <div fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm style="padding-left: 20px !important; margin-top: 20px !important;">
             <button type="submit" mat-raised-button color="primary" class="search-button mr-8 " [disabled]="loading">      
-              Search
+             <b>Search/تلاش کریں</b>  
             </button>
             <a mat-raised-button type="button" class="mat-accent" style="margin-left: 2rem !important;"
               [routerLink]="['/app/pages/Employees/employees-form']">
-              New Employees
+           <b>New Employees/نیا کارکن</b> 
+
             </a>
           </div>
         </div>

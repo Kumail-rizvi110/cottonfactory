@@ -25,6 +25,10 @@ using CottonFMS.Fms.AssetsworkinginProduction;
 using CottonFMS.Fms.Assets;
 using CottonFMS.Fms.CottonFiberInventory;
 using CottonFMS.Fms.CottonFiberUsedinProduction;
+using CottonFMS.Fms.EmployeesTeamMembers;
+using CottonFMS.Fms.Shifts;
+using CottonFMS.Fms.EmployeesTeam;
+using CottonFMS.Fms.ImportantDocuments;
 
 namespace CottonFMS.EntityFrameworkCore
 {
@@ -56,6 +60,15 @@ namespace CottonFMS.EntityFrameworkCore
         public DbSet<Orders> Orders { get; set; }
         public DbSet<ProductionPlan> ProductionPlan { get; set; }
         public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<EmployeesTeam> EmployeesTeam { get; set; }
+        
+        public DbSet<EmployeesTeamMembers> EmployeesTeamMembers { get; set; }
+        public DbSet<Shifts> Shifts { get; set; }
+        public DbSet<ImportantDocuments> ImportantDocuments { get; set; }
+
+        
+
+
 
 
 

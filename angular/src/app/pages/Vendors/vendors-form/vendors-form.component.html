@@ -56,12 +56,12 @@
           </div>
             <div fxLayout="row" style="margin-top: 30px;" fxLayoutAlign="end right" fxFlex="1 0 auto">
   
-                <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;"
+                <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;  margin-left: 8px;"
                  [routerLink]="['/app/pages/Vendors/vendors-list']">
           <b>Back/پیچھے</b>       
                 </a>
   
-                 <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16"
+                 <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16" style="margin-bottom: 5px; margin-left: 8px;" 
                  [disabled]="!vendorsform.form.valid">
                 <b> Submit/جمع</b> 
                  </button>

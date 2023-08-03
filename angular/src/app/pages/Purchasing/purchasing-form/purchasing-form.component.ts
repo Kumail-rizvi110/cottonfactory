@@ -22,6 +22,10 @@ export class PurchasingFormComponent implements OnInit {
   public purchasing : PurchasingDto = new PurchasingDto()
   Purchasingform = new FormGroup({
       amount: new FormControl(""),
+      Name: new FormControl(""),
+      Description: new FormControl(""),
+      Quality: new FormControl(""),
+      Quantity: new FormControl(""),
       PurchaseDate: new FormControl(""),
       // Phone: new FormControl(""),
       // email: new FormControl(""),
@@ -36,6 +40,12 @@ export class PurchasingFormComponent implements OnInit {
       this.PurchasingService.GetById(this.editid).subscribe((Response) => {
        this.id = this.editid  
         this.Purchasingform.controls.amount.setValue(Response.result.amount);
+        this.Purchasingform.controls.Name.setValue(Response.result.name);
+        this.Purchasingform.controls.Decription.setValue(Response.result.description);
+        this.Purchasingform.controls.Quality.setValue(Response.result.quality);
+        this.Purchasingform.controls.Quantity.setValue(Response.result.quantity);
+
+
         this.Purchasingform.controls.PurchaseDate.setValue(Response.result.purchaseDate);
         console.log(Response.result.purchaseDate)
         // this.Paymentsform.controls.Phone.setValue(Response.result.phone);
@@ -52,6 +62,12 @@ export class PurchasingFormComponent implements OnInit {
     this.Purchasingform = this._formBuilder.group({
       //NetCharge: ["", Validators.required,],
       amount: [""],
+      Name: [""],
+      Description: [""],
+      Quality: [""],
+      Quantity: [""],
+
+
       //PurchaseDate: [""],
       // Phone: [""],
       // email: [""],
@@ -92,6 +108,12 @@ export class PurchasingFormComponent implements OnInit {
 debugger
 this.purchasing.Id = this.id;
   this.purchasing.amount = this.Purchasingform.get("amount").value;
+  this.purchasing.Name = this.Purchasingform.get("Name").value;
+  this.purchasing.Description = this.Purchasingform.get("Description").value;
+  this.purchasing.Quality = this.Purchasingform.get("Quality").value;
+  this.purchasing.Quantity = this.Purchasingform.get("Quantity").value;
+
+
   // this.purchasing.PurchaseDate = this.Purchasingform.get("PurchaseDate").value;
   this.purchasing.PurchaseDate = this.pipe.transform(this.Purchasingform.get("PurchaseDate").value, 'MM/dd/yyyy');
 

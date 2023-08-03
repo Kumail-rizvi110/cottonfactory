@@ -20,6 +20,9 @@ namespace CottonFMS.Fms.Sales.DTO_s
 
 
         public long? customer_id { get; set; }
+        public string CustomerName { get; set; }
+
+
 
         public int? quantity { get; set; }
 

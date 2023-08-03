@@ -151,19 +151,19 @@ namespace CottonFMS.Fms.Sales
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
-                                saleslist = saleslist.Where(x => x.customer_id == Convert.ToInt32(searchValue)).ToList();
-                            }
-                            break;
-                        case "ProductId":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                saleslist = saleslist.Where(x => x.product_id == Convert.ToInt32(searchValue)).ToList();
-                            }
-                            break;
+                        //case "Keyword":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                        //        saleslist = saleslist.Where(x => x.customer_id == Convert.ToInt32(searchValue)).ToList();
+                        //    }
+                        //    break;
+                        //case "ProductId":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        saleslist = saleslist.Where(x => x.product_id == Convert.ToInt32(searchValue)).ToList();
+                        //    }
+                        //    break;
                         
                         case "DateFrom":
                             if (searchValue != "" && searchValue != null)
@@ -177,7 +177,14 @@ namespace CottonFMS.Fms.Sales
                                 saleslist = saleslist.Where(x => Convert.ToDateTime(x.Date) <= Convert.ToDateTime(searchValue)).ToList();
                             }
                             break;
-                      
+                        case "Name":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                                saleslist = saleslist.Where(x => x.CustomerName == Convert.ToString(searchValue)).ToList();
+                            }
+                            break;
+
                     }
                 }
 

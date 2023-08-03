@@ -147,19 +147,32 @@ namespace CottonFMS.Fms.Delivery
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
+
+                        case "DateFrom":
                             if (searchValue != "" && searchValue != null)
                             {
-                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
-                                deliverylist = deliverylist.Where(x => x.Address == Convert.ToString(searchValue)).ToList();
+                                deliverylist = deliverylist.Where(x => Convert.ToDateTime(x.DeliveryDate) >= Convert.ToDateTime(searchValue)).ToList();
                             }
                             break;
-                        case "Phone":
+                        case "DateTo":
                             if (searchValue != "" && searchValue != null)
                             {
-                                deliverylist = deliverylist.Where(x => x.DeliveryDate == Convert.ToDateTime(searchValue)).ToList();
+                                deliverylist = deliverylist.Where(x => Convert.ToDateTime(x.DeliveryDate) <= Convert.ToDateTime(searchValue)).ToList();
                             }
                             break;
+                        //case "Keyword":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                        //        deliverylist = deliverylist.Where(x => x.Address == Convert.ToString(searchValue)).ToList();
+                        //    }
+                        //    break;
+                        //case "Phone":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        deliverylist = deliverylist.Where(x => x.DeliveryDate == Convert.ToDateTime(searchValue)).ToList();
+                        //    }
+                        //    break;
 
 
 

@@ -7,6 +7,7 @@ import { DeliveryDto } from '@shared/Dto/DeliveryDto';
 import { UserServiceProxy } from '@shared/service-proxies/service-proxies';
 import { DeliveryService } from '@shared/services/Delivery-service';
 import { SalesService } from '@shared/services/sales-service';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
   selector: 'app-delivery-form',
@@ -14,6 +15,9 @@ import { SalesService } from '@shared/services/sales-service';
   styleUrls: ['./delivery-form.component.css']
 })
 export class DeliveryFormComponent implements OnInit {  
+  public userList1 = [];
+
+  public Delivery: string;
   editid : number;
 id : number;
 
@@ -21,12 +25,15 @@ id : number;
   public delivery : DeliveryDto = new DeliveryDto()
      Deliveryform = new FormGroup({
       DeliveryDate: new FormControl(""),
+      CustomersId: new FormControl(""),
       // LastName: new FormControl(""),
       // Phone: new FormControl(""),
       // email: new FormControl(""),
       Address: new FormControl(""),
   });
   ngOnInit(): void {
+    this.getpatientListByName();
+
     const editid = localStorage.getItem('editid');
     this.editid =  parseInt(editid);
     if (editid != undefined && editid != null) {
@@ -34,6 +41,8 @@ id : number;
       this.DeliveryService.GetById(this.editid).subscribe((Response) => {
        this.id = this.editid  
         this.Deliveryform.controls.Address.setValue(Response.result.address);
+        this.Deliveryform.controls.CustomersId.setValue(Response.result.customersId);
+
         
         this.Deliveryform.controls.DeliveryDate.setValue(Response.result.deliveryDate);
         // this.Deliveryform.controls.Phone.setValue(Response.result.phone);
@@ -52,6 +61,7 @@ id : number;
       // LastName: [""],
       // Phone: [""],
       // email: [""],
+      CustomersId: [""],
       Address: [""],
       DeliveryDate: [
         {
@@ -83,6 +93,62 @@ id : number;
 
 
 
+  onSelectChange(name): void {
+    this.Delivery =name;
+      }
+      
+      // onOptionSelected(event: MatAutocompleteSelectedEvent) {
+      //   // Handle the selected option
+      //   console.log(event.option.value);
+      // }
+    
+    
+      // get(id: number) {
+      //   debugger;
+      //   console.log(id);
+      //   // Your logic here
+      // }
+      selectedUserName: string;
+      selectedUserId: number;
+    
+      onOptionSelected(event: MatAutocompleteSelectedEvent) {
+        const selectedUser = this.userList1.find(user => user.id === event.option.value);
+        this.selectedUserName = selectedUser.name;
+        this.selectedUserId = selectedUser.id;
+        console.log(selectedUser.name);
+        // Your logic here
+      }
+    
+    
+      getname(name): void {
+        debugger
+    this.Delivery =name;
+    }
+
+     getCurrentDate(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    return formattedDate;
+  }
+    getpatientListByName(): void {
+      debugger
+              this.DeliveryService.getList().subscribe((Response) => {
+                Response.forEach((element) => {
+                  const user = {
+                      id: element.id,
+                      name: element.name,
+                  };
+                  debugger
+                  this.userList1.push(user);
+              });
+              console.log(this.userList1);
+              
+        });
+  }
 
   
  save(){
@@ -101,6 +167,8 @@ this.delivery.Id = this.id;
 //  this.vendors.phone = this.Vendorsform.get("Phone").value;
 //  this.vendors.email = this.Vendorsform.get("email").value;
  this.delivery.Address = this.Deliveryform.get("Address").value;
+ this.delivery.CustomersId = this.Deliveryform.get("CustomersId").value;
+
   this.delivery.DeliveryDate = this.pipe.transform(this.Deliveryform.get("DeliveryDate").value, 'MM/dd/yyyy');
 
  debugger

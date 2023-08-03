@@ -25,7 +25,8 @@ namespace CottonFMS.Authorization
             context.CreatePermission(PermissionNames.Pages_ImportantDocuments, L("ImportantDocuments"));
             context.CreatePermission(PermissionNames.Pages_LiveCottonPriceTracker, L("LiveCottonPriceTracker"));
             context.CreatePermission(PermissionNames.Pages_Payments, L("Payments")); 
-            context.CreatePermission(PermissionNames.Pages_Delivery, L("Delivery")); 
+            context.CreatePermission(PermissionNames.Pages_Delivery, L("Delivery"));
+            context.CreatePermission(PermissionNames.Pages_AssetsMaintenance, L("AssetsMaintenance"));
 
 
 

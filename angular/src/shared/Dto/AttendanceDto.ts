@@ -9,8 +9,10 @@ export class AttendanceDto implements IAttendanceDto {
             }
         }
     }
-    AttendanceMark: string | undefined;
+    AttendanceMark: boolean | undefined;
     Date: string | undefined;
+    EmployeesId:number | undefined;
+    isChecked:boolean | undefined;
     // email: string | undefined;
     // Address: string | undefined;
     // Pay: string | undefined;
@@ -35,6 +37,8 @@ export class AttendanceDto implements IAttendanceDto {
         if (data) {
              data["AttendanceMark"] =this.AttendanceMark 
              data["Date"] = this.Date
+             data["EmployeesId"] = this.EmployeesId
+             data["isChecked"] = this.isChecked
             //  data["email"] = this.email
             //  data["Address"] = this.Address
             //  data["Pay"] =  this.Pay
@@ -50,9 +54,10 @@ export class AttendanceDto implements IAttendanceDto {
 }
 
 export interface IAttendanceDto {
-    AttendanceMark: string | undefined;
+    AttendanceMark: boolean | undefined;
     Date: string | undefined;
+    EmployeesId:number | undefined;
+    isChecked:boolean | undefined;
 
-    
     Id: number
 }

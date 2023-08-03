@@ -42,12 +42,14 @@ debugger
       this.assetsService.GetById(this.editid).subscribe((Response) => {
        this.id = this.editid  
         this.Assetsform.controls.FirstName.setValue(Response.result.firstName);
+
         this.Assetsform.controls.Cost.setValue(Response.result.cost);
         // this.Assetsform.controls.DateOfBuying.setValue(Response.result.dateOfBuying);
 
         let req = new Date(this.pipe.transform(Response.result.dateOfBuying, 'yyyy/MM/dd'))
         // this.LibraryForm.controls.Uploaddate.setValue(LBDate);
         this.Assetsform.controls.DateOfBuying.setValue(this.pipe.transform(req, 'yyyy-MM-dd'))
+        this.Assetsform.controls.DateOfBuying.disable(); // Disable the field
 
         // this.Attendanceform.controls.Phone.setValue(Response.result.phone);
         // this.Attendanceform.controls.email.setValue(Response.result.email);

@@ -17,6 +17,9 @@ import { SalesListComponent } from './pages/sales/sales-list/sales-list.componen
 import { AssetsFormComponent } from './pages/Assets/assets-form/assets-form.component';
 import { AssetsListComponent } from './pages/Assets/assets-list/assets-list.component';
 
+import { AssetsmaintenanceFormComponent } from './pages/AssetsMaintenance/assetsmaintenance-form/assetsmaintenance-form.component';
+import { AssetsmaintenanceListComponent } from './pages/AssetsMaintenance/assetsmaintenance-list/assetsmaintenance-list.component';
+
 import { AttendanceFormComponent } from './pages/Attendance/attendance-form/attendance-form.component';
 import { AttendanceListComponent } from './pages/Attendance/attendance-list/attendance-list.component';
 
@@ -69,6 +72,10 @@ import { DeliveryListComponent } from './pages/Delivery/delivery-list/delivery-l
                     
                     { path: 'pages/Assets/assets-form', component: AssetsFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'pages/Assets/assets-list', component: AssetsListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+
+ 
+                    { path: 'pages/AssetsMaintenance/assetsmaintenance-form', component: AssetsmaintenanceFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    { path: 'pages/AssetsMaintenance/assetsmaintenance-list', component: AssetsmaintenanceListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
 
                     { path: 'pages/Attendance/attendance-form', component: AttendanceFormComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'pages/Attendance/attendance-list', component: AttendanceListComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },

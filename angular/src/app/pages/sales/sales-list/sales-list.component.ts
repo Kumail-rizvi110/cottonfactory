@@ -174,6 +174,8 @@ import { SalesService } from '@shared/services/sales-service';
  */
 class AdvanceQueryParameterDto {
   keyword: string;
+
+  Name: string;
   product:number;
   DateFrom: Date;
   DateTo:Date;
@@ -188,6 +190,8 @@ export class SalesListComponent implements OnInit {
 
   filterForm = new FormGroup({
     keyword: new FormControl(""),
+    Name: new FormControl(""),
+
     product: new FormControl(""),
     DateFrom: new FormControl(""),
     DateTo: new FormControl("")
@@ -272,6 +276,8 @@ Submit(){
     req.DateFrom =this.filterForm.controls.DateFrom.value;
     req.DateTo = this.filterForm.controls.DateTo.value;
     req.keyword = this.filterForm.controls.keyword.value;
+    req.Name = this.filterForm.controls.Name.value;
+
     req.product = this.filterForm.controls.product.value;
     
 

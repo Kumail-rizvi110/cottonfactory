@@ -24,6 +24,12 @@ using CottonFMS.Fms.Sales.DTO_s;
 using CottonFMS.Fms.Vendors;
 using CottonFMS.Fms.Vendors.DTO_s;
 using CottonFMS.Fms.Customers.DTO_s;
+using CottonFMS.Fms.AssetsMaintenance.Dto_s;
+using CottonFMS.Fms.AssetsMaintenance;
+using CottonFMS.Fms.EmployeesTeam.DTO_s;
+using CottonFMS.Fms.EmployeesTeam;
+using CottonFMS.Fms.ProductionPlan;
+using CottonFMS.Fms.Production.DTO_s;
 
 namespace CottonFMS
 {
@@ -39,13 +45,32 @@ namespace CottonFMS
             {
 
                 config.CreateMap<SalesModel, Sales>()
-              .ForMember(des => des.customer_id, opt => opt.MapFrom(src => src.customer_id))
+              .ForMember(des => des.customer_id, opt => opt.MapFrom(src => src.customer_id ))
               .ForMember(des => des.NetCharge, opt => opt.MapFrom(src => src.NetCharge))
               .ForMember(des => des.price, opt => opt.MapFrom(src => src.price))
               .ForMember(des => des.product_id, opt => opt.MapFrom(src => src.product_id))
               .ForMember(des => des.quantity, opt => opt.MapFrom(src => src.quantity));
 
                 config.CreateMap<Sales, SalesModel>().ReverseMap();
+
+
+                config.CreateMap<EmployeesTeamModel, EmployeesTeam>()
+            .ForMember(des => des.NumbersOfTeamMembers, opt => opt.MapFrom(src => src.NumbersOfTeamMembers))
+            .ForMember(des => des.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(des => des.EmployeesTeamMembersId, opt => opt.MapFrom(src => src.EmployeesTeamMembersId))
+            .ForMember(des => des.ShiftsId, opt => opt.MapFrom(src => src.ShiftsId));
+
+                config.CreateMap<EmployeesTeam, EmployeesTeamModel>().ReverseMap();
+
+                config.CreateMap<ProductionModel, ProductionPlan>()
+          .ForMember(des => des.ProductionDate, opt => opt.MapFrom(src => src.ProductionDate))
+          .ForMember(des => des.TimeTaken, opt => opt.MapFrom(src => src.TimeTaken))
+          .ForMember(des => des.Quality, opt => opt.MapFrom(src => src.Quality))
+          .ForMember(des => des.CottonProduced, opt => opt.MapFrom(src => src.CottonProduced))
+          .ForMember(des => des.CottonFiberUsed, opt => opt.MapFrom(src => src.CottonFiberUsed));
+
+
+                config.CreateMap<ProductionPlan, ProductionModel>().ReverseMap();
 
 
                 config.CreateMap<VendorsModel, Vendors>()
@@ -58,12 +83,12 @@ namespace CottonFMS
                 config.CreateMap<Vendors, VendorsModel>().ReverseMap();
 
 
-                config.CreateMap<OrdersModel, Orders>()
-           .ForMember(des => des.Customers.FirstName +' '+ des.Customers.FirstName, opt => opt.MapFrom(src => src.CustomersName))
-           .ForMember(des => des.CottonInventoryId, opt => opt.MapFrom(src => src.CottonInventoryId))
-           .ForMember(des => des.CottonQuality, opt => opt.MapFrom(src => src.CottonQuality))
-           .ForMember(des => des.CustomersId, opt => opt.MapFrom(src => src.CustomersId))
-           ;
+           //     config.CreateMap<OrdersModel, Orders>()
+           //.ForMember(des => des.Customers.FirstName +' '+ des.Customers.FirstName, opt => opt.MapFrom(src => src.CustomersName))
+           //.ForMember(des => des.CottonInventoryId, opt => opt.MapFrom(src => src.CottonInventoryId))
+           //.ForMember(des => des.CottonQuality, opt => opt.MapFrom(src => src.CottonQuality))
+           //.ForMember(des => des.CustomersId, opt => opt.MapFrom(src => src.CustomersId))
+           //;
 
                 config.CreateMap<Orders, OrdersModel>().ReverseMap();
 
@@ -87,10 +112,11 @@ namespace CottonFMS
 
                 config.CreateMap<PurchaseModel, Purchase>()
              .ForMember(des => des.amount, opt => opt.MapFrom(src => src.amount))
-             .ForMember(des => des.PurchaseDate, opt => opt.MapFrom(src => src.PurchaseDate));
-                //.ForMember(des => des.Phone, opt => opt.MapFrom(src => src.Phone))
-                //.ForMember(des => des.email, opt => opt.MapFrom(src => src.email))
-                //.ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
+             .ForMember(des => des.PurchaseDate, opt => opt.MapFrom(src => src.PurchaseDate))
+                .ForMember(des => des.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(des => des.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(des => des.Quality, opt => opt.MapFrom(src => src.Quality))
+                .ForMember(des => des.Quantity, opt => opt.MapFrom(src => src.Quantity));
 
                 config.CreateMap<Purchase, PurchaseModel>().ReverseMap();
 
@@ -133,6 +159,17 @@ namespace CottonFMS
 //.ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
 
                 config.CreateMap<Assets, AssetsModel>().ReverseMap();
+
+                config.CreateMap<AssetsMaintenanceModel, AssetsMaintenance>()
+.ForMember(des => des.Cost, opt => opt.MapFrom(src => src.Cost))
+.ForMember(des => des.MaintenanceTime, opt => opt.MapFrom(src => src.MaintenanceTime))
+.ForMember(des => des.MaintenanceDate, opt => opt.MapFrom(src => src.MaintenanceDate))
+
+.ForMember(des => des.Description, opt => opt.MapFrom(src => src.Description));
+                //.ForMember(des => des.email, opt => opt.MapFrom(src => src.email))
+                //.ForMember(des => des.Address, opt => opt.MapFrom(src => src.Address));
+
+                config.CreateMap<AssetsMaintenance, AssetsMaintenanceModel>().ReverseMap();
 
                 config.CreateMap<CustomersModel, CottonFMS.Fms.Customers.Customers>()
              .ForMember(des => des.FirstName, opt => opt.MapFrom(src => src.FirstName))

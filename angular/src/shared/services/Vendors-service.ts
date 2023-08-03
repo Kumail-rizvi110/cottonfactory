@@ -5,6 +5,7 @@ import { VendorsDto } from "@shared/Dto/VendorsDto";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { options } from "toastr";
+import { ImportantDocumentsDto } from '@shared/Dto/ImportantDocumentsDto';
 
 
 @Injectable({
@@ -69,5 +70,8 @@ GetById(id : number) : Observable<any>
        return this.http.get<any>(this.REST_API_SERVER+'/api/services/app/Vendors/GetVendorsById?Id='+id, options);
     }
 
+    getImages(id: number): Observable<any[]> {
+      return this.http.get<any[]>(this.REST_API_SERVER+'/api/services/app/ImportantDocuments/GetImportantDocumentsById?Id='+id);
+    }
   
 }

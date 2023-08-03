@@ -11,6 +11,12 @@ namespace CottonFMS.Fms.AssetsMaintenance
     {
         public decimal Cost { get; set; }
         public DateTime MaintenanceDate { get; set; }
+        public string Description { get; set; }
+        public long? AssetsId { get; set; }
+
+        public string MaintenanceTime { get; set; }
+
+
         //public long? AssetsId { get; set; }
 
 

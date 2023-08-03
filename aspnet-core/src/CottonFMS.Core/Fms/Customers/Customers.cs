@@ -11,6 +11,6 @@ namespace CottonFMS.Fms.Customers
         public string LastName { get; set; }
         public int Phone { get; set; }
         public string email { get; set; }
-        public string Address { get; set; }
+        public string Address { get; set; } 
     }
 }

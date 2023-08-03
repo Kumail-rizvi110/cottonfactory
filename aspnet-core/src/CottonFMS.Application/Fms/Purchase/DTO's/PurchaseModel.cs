@@ -11,6 +11,13 @@ namespace CottonFMS.Fms.Purchase.DTO_s
         public long? CottonFiberPurchasedId { get; set; }
         public int amount { get; set; }
         public DateTime PurchaseDate { get; set; }
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+        public string Quality { get; set; }
+
+        public int Quantity { get; set; }
+
 
     }
 }

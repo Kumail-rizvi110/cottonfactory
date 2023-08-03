@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CottonFMS.Fms.Assets
 {
-  public  class AssetsAppService : CottonFMSAppServiceBase
+    public class AssetsAppService : CottonFMSAppServiceBase
     {
         private CottonFMSDbContext _context => _dbContextProvider.GetDbContext();
         private readonly IDbContextProvider<CottonFMSDbContext> _dbContextProvider;
@@ -147,13 +147,13 @@ namespace CottonFMS.Fms.Assets
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
-                                assetslist = assetslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
-                            }
-                            break;
+                        //case "Keyword":
+                        //    if (searchValue != "" && searchValue != null)
+                        //    {
+                        //        //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                        //        assetslist = assetslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
+                        //    }
+                        //    break;
                         //case "Phone":
                         //    if (searchValue != "" && searchValue != null)
                         //    {
@@ -170,6 +170,12 @@ namespace CottonFMS.Fms.Assets
                             if (searchValue != "" && searchValue != null)
                             {
                                 assetslist = assetslist.Where(x => Convert.ToDateTime(x.DateOfBuying) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+                        case "Name":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                assetslist = assetslist.Where(x => x.FirstName == Convert.ToString(searchValue)).ToList();
                             }
                             break;
 
@@ -203,5 +209,30 @@ namespace CottonFMS.Fms.Assets
             return result;
         }
 
+
+        public async Task<List<GetAssets>> GetAllAssets()
+        {
+            try
+            {
+                List<GetAssets> result = new List<GetAssets>();
+                var emp = _repo.GetAllListAsync();
+                // result = ObjectMapper.Map<List<GetCustomers>>(customers);
+
+                foreach (var assets in emp.Result)
+                {
+                    GetAssets Ast = new GetAssets();
+                    Ast.Name = assets.FirstName + ' ';
+                    Ast.Id = (int)assets.Id;
+                    result.Add(Ast);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

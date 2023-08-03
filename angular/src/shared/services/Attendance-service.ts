@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { AppConsts } from "@shared/AppConsts";
 import { AttendanceDto } from "@shared/Dto/AttendanceDto";
+import { GetEmployeesDto } from "@shared/Dto/GetEmployeesDto";
 import { SaleDto } from "@shared/Dto/SaleDto";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -42,7 +43,7 @@ export class AttendanceService {
 
       return this.http.post<any>(this.REST_API_SERVER + '/api/services/app/Attendance/PostFilterData?page=' , values, options)
           .pipe(map(res => {
-              
+                
               this.$isDataLoaded.emit(res['result']);
   
           }));
@@ -70,6 +71,14 @@ GetById(id : number) : Observable<any>
     let options = { headers: headers };
        return this.http.get<any>(this.REST_API_SERVER+'/api/services/app/Attendance/GetAttendanceById?Id='+id, options);
     }
+    getList(): Observable<GetEmployeesDto[]> {
+      let url_ = this.REST_API_SERVER + "/api/services/app/Employees/GetAllEmployees" ;
 
+      return this.http.get<GetEmployeesDto[]>(url_).pipe(
+          map((response_: any) => {
+              return response_.result;
+          })
+      );
+  }
   
 }

@@ -1,5 +1,6 @@
 import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
+import { AppAuthService } from '@shared/auth/app-auth.service';
 
 @Component({
     templateUrl: './topbar.component.html',
@@ -7,10 +8,19 @@ import { AppComponentBase } from '@shared/app-component-base';
     encapsulation: ViewEncapsulation.None
 })
 export class TopBarComponent extends AppComponentBase {
+    shownLoginName = '';
 
     constructor(
-        injector: Injector
+        injector: Injector,
+        private _authService: AppAuthService
+
     ) {
         super(injector);
+    }
+    ngOnInit() {
+        this.shownLoginName = this.appSession.getShownLoginName();
+    }
+    logout(): void {
+        this._authService.logout();
     }
 }

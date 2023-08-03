@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 //import { Component, OnInit } from '@angular/core';
 // import { Component, Injector, OnInit } from '@angular/core';
-import { MatDialogRef, MatCheckboxChange } from '@angular/material';
+import { MatDialogRef, MatCheckboxChange, MatAutocompleteSelectedEvent } from '@angular/material';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -28,7 +28,10 @@ import { AttendanceService } from '@shared/services/Attendance-service';
   styleUrls: ['./attendance-form.component.css']
 })
 export class AttendanceFormComponent implements OnInit {
+  isChecked = false;
+  public userList1 = [];
 
+public Employees: string;
   editid : number;
 id : number;
   public btnshow : boolean = true
@@ -36,6 +39,8 @@ id : number;
   Attendanceform = new FormGroup({
       AttendanceMark: new FormControl(""),
       Date: new FormControl(""),
+      EmployeesId: new FormControl(""),
+      isChecked: new FormControl(""),
       // email: new FormControl(""),
       // Address: new FormControl(""),
       // Pay: new FormControl(""),
@@ -47,13 +52,20 @@ id : number;
   });
   ngOnInit(): void {
     debugger
+    let today = new Date();
+   
+    this.getpatientListByName();
     const editid = localStorage.getItem('editid');
     this.editid =  parseInt(editid);
     if (editid != undefined && editid != null) {
      
       this.attendanceService.GetById(this.editid).subscribe((Response) => {
        this.id = this.editid  
-        this.Attendanceform.controls.AttendanceMark.setValue(Response.result.attendanceMark);
+        // this.Attendanceform.controls.AttendanceMark.setValue(Response.result.attendanceMark);
+        this.Attendanceform.controls.EmployeesId.setValue(Response.result.employeesId);
+        // this.Attendanceform.controls.isChecked.setValue(Response.result.isChecked);
+
+
        // this.Attendanceform.controls.Date.setValue(Response.result.date);
 
         
@@ -74,7 +86,8 @@ id : number;
 
     this.Attendanceform = this._formBuilder.group({
       // NetCharge: ["", Validators.required,],
-      AttendanceMark: [""],
+      // AttendanceMark: [""],
+      EmployeesId:[""],
        //Date: [""],
       // email: [""],
       // Address: [""],
@@ -114,12 +127,72 @@ id : number;
 
 
 
+  onSelectChange(name): void {
+    this.Employees =name;
+      }
+      
+      // onOptionSelected(event: MatAutocompleteSelectedEvent) {
+      //   // Handle the selected option
+      //   console.log(event.option.value);
+      // }
+    
+    
+      // get(id: number) {
+      //   debugger;
+      //   console.log(id);
+      //   // Your logic here
+      // }
+      selectedUserName: string;
+      selectedUserId: number;
+    
+      onOptionSelected(event: MatAutocompleteSelectedEvent) {
+        const selectedUser = this.userList1.find(user => user.id === event.option.value);
+        this.selectedUserName = selectedUser.name;
+        this.selectedUserId = selectedUser.id;
+        console.log(selectedUser.name);
+        // Your logic here
+      }
+    
+    
+      getname(name): void {
+        debugger
+    this.Employees =name;
+    }
 
+     getCurrentDate(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    return formattedDate;
+  }
+    getpatientListByName(): void {
+      debugger
+              this.attendanceService.getList().subscribe((Response) => {
+                Response.forEach((element) => {
+                  const user = {
+                      id: element.id,
+                      name: element.name,
+                  };
+                  debugger
+                  this.userList1.push(user);
+              });
+              console.log(this.userList1);
+              
+        });
+  }
+    
   
  save(){
 debugger
 this.attendance.Id= this.id;
-  this.attendance.AttendanceMark = this.Attendanceform.get("AttendanceMark").value;
+  // this.attendance.AttendanceMark = this.Attendanceform.get("AttendanceMark").value;
+  this.attendance.EmployeesId = this.Attendanceform.get("EmployeesId").value;
+  // this.attendance.isChecked = this.Attendanceform.get("isChecked").value;
+
+
   this.attendance.Date = this.pipe.transform(this.Attendanceform.get("Date").value, 'MM/dd/yyyy');
   //  this.employees.email = this.Employeesform.get("email").value;
 //  this.employees.Address = this.Employeesform.get("Address").value;

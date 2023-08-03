@@ -77,6 +77,8 @@ import { VendorsFormComponent } from './pages/Vendors/vendors-form/vendors-form.
 import { VendorsListComponent } from './pages/Vendors/vendors-list/vendors-list.component';
 import { DeliveryListComponent } from './pages/Delivery/delivery-list/delivery-list.component';
 import { DeliveryFormComponent } from './pages/Delivery/delivery-form/delivery-form.component';
+import { AssetsmaintenanceFormComponent } from './pages/AssetsMaintenance/assetsmaintenance-form/assetsmaintenance-form.component';
+import { AssetsmaintenanceListComponent } from './pages/AssetsMaintenance/assetsmaintenance-list/assetsmaintenance-list.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +109,7 @@ import { DeliveryFormComponent } from './pages/Delivery/delivery-form/delivery-f
     SalesListComponent,
     AssetsFormComponent,
     AssetsListComponent,
+
     AttendanceFormComponent,
     AttendanceListComponent,
     CustomersFormComponent,
@@ -131,6 +134,8 @@ import { DeliveryFormComponent } from './pages/Delivery/delivery-form/delivery-f
     VendorsListComponent,
     DeliveryListComponent,
     DeliveryFormComponent,
+    AssetsmaintenanceFormComponent,
+    AssetsmaintenanceListComponent,
 
     // PaymentFormComponent,
 

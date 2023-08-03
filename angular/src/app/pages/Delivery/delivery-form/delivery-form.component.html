@@ -16,6 +16,29 @@
       [formGroup]="Deliveryform" (ngSubmit)="save()">
   
           <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+            <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width:30% !important;margin-right: 3px !important;display:inline-block !important;">
+                <mat-label>Customer</mat-label>
+                <input type="text" placeholder="Enter Customer Name" matInput [matAutocomplete]="auto" (keyup)="getUserIdsFirstWay($event)" formControlName="CustomersId" [(ngModel)]="selectedUserId">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+                  <mat-option *ngFor="let user of userList1" [value]="user.id">
+                      {{user.name}}
+                  </mat-option>
+              
+              </mat-autocomplete>
+          </mat-form-field>
+  
+          <!-- <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width: 30%;margin-right: 3px !important; display:inline-block !important;">
+            <mat-label>Selected Customer</mat-label>
+            <input matInput readonly  value="{{customer}}">
+            <mat-icon matSuffix class="disabled-text">person</mat-icon>
+           </mat-form-field> -->
+           <mat-form-field fxFlex="50" class="pr-4" appearance="fill" style="margin-top: 9px !important;width: 30%;margin-right: 3px !important;display:inline-block !important;">
+            <mat-label>Selected Customer</mat-label>
+            <input matInput readonly [value]="selectedUserName || '' ">
+            <mat-icon matSuffix class="disabled-text">person</mat-icon>
+          </mat-form-field>
+  
   
             <mat-form-field fxFlex="25" class="pr-4" appearance="fill">
                 <mat-label>Delivery Date</mat-label>
@@ -60,12 +83,12 @@
           </div>
             <div fxLayout="row" style="margin-top: 30px;" fxLayoutAlign="end right" fxFlex="1 0 auto">
   
-                <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px;"
+                <a mat-raised-button color="primary" class="search-button mr-8" style="width: 120px; margin-left: 8px;" 
                  [routerLink]="['/app/pages/Delivery/delivery-list']">
              <b>Back/پیچھے</b>    
                 </a>
   
-                 <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16"
+                 <button mat-raised-button *ngIf="btnshow" class="mat-accent ml-16" style="margin-bottom: 5px; margin-left: 8px;" 
                  [disabled]="!deliveryform.form.valid">
               <b> Submit/جمع</b>  
                  </button>

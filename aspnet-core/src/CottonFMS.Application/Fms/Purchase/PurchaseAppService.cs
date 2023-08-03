@@ -51,6 +51,12 @@ namespace CottonFMS.Fms.Purchase
                         tem.VendorsId = input.VendorsId;
                         tem.CottonFiberPurchasedId = input.CottonFiberPurchasedId;
 
+                        tem.Name = input.Name;
+                        tem.Description = input.Description;
+                        tem.Quality = input.Quality;
+                        tem.Quantity = input.Quantity;
+
+
                         //tem.Phone = input.Phone;
                         //tem.email = input.email;
                         //tem.Address = input.Address;
@@ -71,6 +77,11 @@ namespace CottonFMS.Fms.Purchase
                     purchase.PurchaseDate = input.PurchaseDate;
                     purchase.VendorsId = input.VendorsId;
                     purchase.CottonFiberPurchasedId = input.CottonFiberPurchasedId;
+
+                    purchase.Name = input.Name;
+                    purchase.Description = input.Description;
+                    purchase.Quality = input.Quality;
+                    purchase.Quantity = input.Quantity;
                     //payments.Phone = input.Phone;
                     //payments.email = input.email;
                     //payments.Address = input.Address;
@@ -148,13 +159,7 @@ namespace CottonFMS.Fms.Purchase
                     var searchValue = property.Value;
                     switch (property.Key)
                     {
-                        case "Keyword":
-                            if (searchValue != "" && searchValue != null)
-                            {
-                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
-                                purchaselist = purchaselist.Where(x => x.amount == Convert.ToInt32(searchValue)).ToList();
-                            }
-                            break;
+                        
                         case "DateFrom":
                             if (searchValue != "" && searchValue != null)
                             {
@@ -165,6 +170,13 @@ namespace CottonFMS.Fms.Purchase
                             if (searchValue != "" && searchValue != null)
                             {
                                 purchaselist = purchaselist.Where(x => Convert.ToDateTime(x.PurchaseDate) <= Convert.ToDateTime(searchValue)).ToList();
+                            }
+                            break;
+                        case "Name":
+                            if (searchValue != "" && searchValue != null)
+                            {
+                                //issuelist = issuelist.Where(x => (x.pName).ToLower() == (searchValue).ToLower() || x.Mrno == searchValue).ToList();
+                                purchaselist = purchaselist.Where(x => x.Name == Convert.ToString(searchValue)).ToList();
                             }
                             break;
 
